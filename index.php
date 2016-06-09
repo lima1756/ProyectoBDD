@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>prueba</title>
-	<link rel="stylesheet" type="text/css" href="index2.css">
+	<link rel="stylesheet" type="text/css" href="CSS/index2.css">
 </head>
 
 <style type="text/css">

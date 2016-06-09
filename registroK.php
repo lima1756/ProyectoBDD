@@ -12,34 +12,12 @@ if(isset($_POST['email'])){
     echo "Error: " . $e->getMessage();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
+
 <html>
 <head>
 	<title>prueba</title>
-	<link rel="stylesheet" type="text/css" href="registroK.css">
+	<link rel="stylesheet" type="text/css" href="CSS/registroK.css">
 </head>
 <header>
 	<div id="buscador">

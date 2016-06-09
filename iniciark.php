@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>prueba</title>
-	<link rel="stylesheet" type="text/css" href="iniciark.css">
+	<link rel="stylesheet" type="text/css" href="CSS/iniciark.css">
 </head>
 <header>
 	<div id="buscador">
