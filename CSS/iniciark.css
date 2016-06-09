@@ -1,0 +1,88 @@
+*{ padding:0px; margin:0px;}
+
+html{ background-color: #68b6df;}
+header{
+	box-shadow: 0px 0px 5px black;
+	background: white;
+}
+
+#buscador{
+	margin: 20px auto;
+	width: 550px;
+	padding:10px;
+	height: 100px;
+}
+
+#buscador form{
+float: left;	
+margin-left: 100px;
+height:30px;
+margin-top: 30px;
+}
+
+#buscador form input{
+
+	height:30px;
+	padding: 5px;
+}
+
+#buscador img{
+
+	float: right;
+	margin-left: 15px;
+	margin-top: 5px;
+}
+
+#boton{
+border:1px solid white;
+background-color:#68b6df;
+color: black;
+}
+
+#boton:hover{
+
+	background-color: #99AACC
+
+}
+
+section{
+
+	width: 80%;
+	height:800px;
+	background-color: white;
+	box-shadow: 0px 0px 5px black;
+	float: left;
+}
+
+#slide-container{
+  
+		background: #a0a9a9;
+	width: 110%;
+	height: 300px;
+	padding-top: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+#slide-container p{text-align: center; margin-top: 30px; color: white; font-family: sans-serif;}
+
+#slide{
+		background: white ;
+	width: 50%;
+	height: 200px;
+	margin:0px auto;
+
+
+
+
+}
+
+#sidebar{
+	width:20%;
+	height:800px; 
+	background-color:   #A0a9a9;
+	float: right;
+	box-shadow: 0px 0px 5px black;
+}
+
+
