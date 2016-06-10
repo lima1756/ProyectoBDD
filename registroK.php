@@ -20,6 +20,9 @@ if(isset($_POST['email'])){
 		<title>Registrarse</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="CSS/registroK.css">
+		<script type="text/javascript" href="JavaScripts/modernizr-custom.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
 	</head>
 	<body>
 		<header>
@@ -39,14 +42,18 @@ if(isset($_POST['email'])){
 				<input type="text" class="text" id="nombre" name="nombre" placeholder="Nombre(s)" required><br>
 				<input type="text" class="text" id="apellido" name="apellido" placeholder="Apellido(s)" required><br>
 				<input type="text" class="text" id="usuario" name="usuario" placeholder="Usuario" required><br>
-				<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
-				<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-				<script>
-    				 ('forms-ext', {types: 'date'});
-					webshims.polyfill('forms forms-ext');
+				<script type="text/javascript">
+					alert("hola")
+					alert(Modernizr.inputypes.date);
+					if (Modernizr.inputypes.date) {
+						document.write('<input type="date" class="text" id="fecha" name="fecha" max="2016-06-30" min="1900-01-01" required><br>');
+					}
+					else {
+						document.write("('forms-ext', {types: 'date'});");
+						document.write("webshims.polyfill('forms forms-ext');");
+						document.write('<input type="date" class="text2" placeholder="Fecha de nacimiento" required/>");');
+					} 
 				</script>
-				<input type="date" class="text" placeholder="Fecha de nacimiento" required/>
-				<!--<input type="date" class="text" id="fecha" name="fecha" required><br>-->
 				<input type="password" class="text"  id="pass" name="pass" placeholder="Contraseña" required><br>
 				<input type="password" class="text"  id="pass" name="pass2" placeholder="Confirmar Contraseña" required><br>
 				<input type="submit" id="enviar" name="login" value="Registrarse">

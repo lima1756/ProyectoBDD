@@ -1,6 +1,12 @@
-*{ padding:0px; margin:0px;}
+*{ 
+	padding:0px; 
+	margin:0px;
+}
 
-html{ background-color: #68b6df;}
+html{
+	 background-color: #68b6df;
+}
+
 header{
 	box-shadow: 0px 0px 5px black;
 	background: white;
@@ -27,7 +33,6 @@ margin-top: 30px;
 }
 
 #buscador img{
-
 	float: right;
 	margin-left: 15px;
 	margin-top: 5px;
@@ -40,46 +45,16 @@ color: black;
 }
 
 #boton:hover{
-
 	background-color: #99AACC
-
 }
 
 section{
-
 	width: 80%;
 	height:800px;
 	background-color: white;
 	box-shadow: 0px 0px 5px black;
 	float: left;
 }
-
-#slide-container{
-  
-		background: #a0a9a9;
-	width: 110%;
-	height: 300px;
-	padding-top: 30px;
-	box-sizing: border-box;
-	display: inline-block;
-}
-
-
-
-#sidebar{
-	width:20%;
-	height:800px; 
-	background-color:   #A0a9a9;
-	float: right;
-	box-shadow: 0px 0px 5px black;
-}
-
-*{
-	padding: 0px; margin: 0px;
-
-}
-  
-
 
 #formulario{
 max-width: 600px;
@@ -91,19 +66,25 @@ background-color: rgba(17,167,178,0.3);
 
 
 #formulario form {
-
 	margin: 0px auto;
-
 }
 
 #formulario form input{
-
 	display: block;
 	margin: 20px auto;
 	padding: 5px;
 }
 
 .text{
+width: 90%;
+height: 40px;
+border:1px solid white;
+box-shadow: 0px 0px 3px #333;
+color: #1c88b5;
+font-weight: 700;
+}
+
+.text2{
 width: 90%;
 height: 40px;
 border:1px solid white;
@@ -124,12 +105,11 @@ display: inline-block;
 }
 
 #enviar:hover{
-	background-color: aqua;
+	background-color: #99AACC;
+	color: black;
 	border:1px solid aqua;
 
 }
-
-
 
 p{
 	color: white;
