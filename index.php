@@ -1,56 +1,8 @@
 <html>
 <head>
-	<title>prueba</title>
-	<link rel="stylesheet" type="text/css" href="CSS/index2.css">
+	<title>Koncert!</title>
+	<link rel="stylesheet" type="text/css" href="CSS/index.css">
 </head>
-
-<style type="text/css">
-
-
-
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "registro";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-
-// prepare and bind
-
-
-$stmt = $conn->prepare("INSERT INTO usuarios (email,nombre,apellido,usuario,password) 
-    VALUES (:email,:nombre,:apellido,:usuario,:password)");
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':apellido', $apellido);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':usuario', $usuario);
-    $stmt->bindParam(':email', $password);
-
-
-
-
-// set parameters and execute
-$nombre = "John";
-$apellido = "Doe";
-$email = "john@example.com";
-$usuario="jon1";
-$password="36606460";
-$stmt->execute();
- echo "New records created successfully";
-    }
-catch(PDOException $e)
-    {
-    echo "Error: " . $e->getMessage();
-    }
-$conn = null;
-?>
-
 <body>
 <header>
 	<div id="buscador">
@@ -58,7 +10,7 @@ $conn = null;
 <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
 <input type="text" name="search" placeholder="Buscar..." id="search">
 </form>
-<img src="koncert.jpg" width="200px;">
+<img src="Images/koncert.jpg" width="200px;">
 
 </div>
 </header>
@@ -72,8 +24,8 @@ $conn = null;
 
 <div class="w3-content w3-section" style="max-width:500px">
   
-  <img class="mySlides" src="metallica.png" style="width:52%">
-  <img class="mySlides" src="Concierto.jpg" style="width:70%">
+  <img class="mySlides" src="Images/metallica.png" style="width:52%">
+  <img class="mySlides" src="Images/Concierto.jpg" style="width:70%">
 </div>
 
 	</div>
@@ -91,15 +43,6 @@ $conn = null;
 	<a href="iniciarK.php">Iniciar sesion</a>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 <script>
 var myIndex = 0;
 carousel();

@@ -79,15 +79,7 @@ section{
 
 }
   
-,
-body{
-	background:url('img/buho.png');
-	background-color:#222;
-	background-blend-mode: multiply;
-	background-repeat: no-repeat;
-	background-size: fixed;
-	background-position: center;
-}
+
 
 #formulario{
 max-width: 600px;
@@ -154,8 +146,9 @@ padding-top: 50px;
 }
 
 .fecha{
+	margin-left:30px;
 	color: white;
-	text-align: center;
+	text-align: left;
 	font-family: Amatic SC;
 	font-size: 15px;
 	font-weight: 700;
