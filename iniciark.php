@@ -1,7 +1,10 @@
+<!DOCTYPE html>
 <?php
 ?>
-<html>
+
+<html  lang="es-US">
 <head>
+	<meta charset="UTF-8">
 	<title>prueba</title>
 	<link rel="stylesheet" type="text/css" href="CSS/iniciark.css">
 </head>

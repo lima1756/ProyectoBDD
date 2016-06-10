@@ -1,5 +1,4 @@
 <?php
-
 class BaseDeDatos {
     private $con;
     //$this->con;

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 include("Class-Functions/BaseDeDatos.php");
 if(isset($_POST['email'])){
@@ -14,9 +15,10 @@ if(isset($_POST['email'])){
 }
 ?>
 
-<html>
+<html lang="es-US">
 	<head>
 		<title>Registrarse</title>
+		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="CSS/registroK.css">
 	</head>
 	<body>
@@ -37,8 +39,14 @@ if(isset($_POST['email'])){
 				<input type="text" class="text" id="nombre" name="nombre" placeholder="Nombre(s)" required><br>
 				<input type="text" class="text" id="apellido" name="apellido" placeholder="Apellido(s)" required><br>
 				<input type="text" class="text" id="usuario" name="usuario" placeholder="Usuario" required><br>
-				<p class="fecha">Fecha de nacimiento:</p>
-				<input type="date" class="text" id="fecha" name="fecha" required><br>
+				<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+				<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+				<script>
+    				 ('forms-ext', {types: 'date'});
+					webshims.polyfill('forms forms-ext');
+				</script>
+				<input type="date" class="text" placeholder="Fecha de nacimiento" required/>
+				<!--<input type="date" class="text" id="fecha" name="fecha" required><br>-->
 				<input type="password" class="text"  id="pass" name="pass" placeholder="Contraseña" required><br>
 				<input type="password" class="text"  id="pass" name="pass2" placeholder="Confirmar Contraseña" required><br>
 				<input type="submit" id="enviar" name="login" value="Registrarse">

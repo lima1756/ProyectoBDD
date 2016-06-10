@@ -1,7 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="es-US">
 <head>
 	<title>Koncert!</title>
 	<link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <meta charset="UTF-8">
 </head>
 <body>
 <header>
