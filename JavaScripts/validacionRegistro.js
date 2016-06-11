@@ -31,7 +31,12 @@ function validacion(form) {
         return false;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+    if(inputPassword1 == null || !/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_\.]).{8,20})/.test(inputPassword1)){
+        alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula, un numero y un caracter especial '.' y '-' y '_'");
+>>>>>>> origin/master
 =======
     if(inputPassword1 == null || !/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_\.]).{8,20})/.test(inputPassword1)){
         alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula, un numero y un caracter especial '.' y '-' y '_'");

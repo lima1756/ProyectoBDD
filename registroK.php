@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -30,6 +31,9 @@ $apellido=$_POST['apellido'];
     echo "Error: " . $e->getMessage();
     }
 }
+=======
+include("Class-Functions/Registro.php");
+>>>>>>> origin/master
 =======
 include("Class-Functions/Registro.php");
 >>>>>>> origin/master
