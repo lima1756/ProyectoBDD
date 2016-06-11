@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <?php
-include("Class-Functions/BaseDeDatos.php");
-if(isset($_POST['email'])){
-	$ObjBD= new BaseDeDatos();
-	var_dump($_POST);
-	var_dump($ObjBD);
-	try{
-	$ObjBD->registro($_POST['nombre'],$_POST['fecha'],$_POST['pass'],$_POST['usuario'],$_POST['email'],$_POST['apellido']);
-	}
-	catch(PDOException $e)
-    {
-    echo "Error: " . $e->getMessage();
-    }
-}
+include("Class-Functions/Registro.php");
 ?>
 
 <html lang="es-US">
@@ -37,7 +25,7 @@ if(isset($_POST['email'])){
 		</header>
 		<div id="formulario">
 			<p>Datos De Registro</p>
-			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="registroK.php">
+			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="Class-Functions/Registro.php">
 				<input type="email" class="text" id="email" name="email" tabindex="1" placeholder="Email" required><br>
 				<input type="text" class="text" id="nombre" name="nombre" tabindex="2" placeholder="Nombre(s)" maxlength="30" required><br>
 				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>

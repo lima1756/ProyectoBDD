@@ -8,11 +8,11 @@ function validacion(form) {
     var inputPassword1 = form.elements[7].value;  
     var inputPassword2 = form.elements["pass2"].value;    
     var inputEmail = form.elements["email"].value; 
-    if(inputName == null || inputName.length == 0 || inputName.length > 30 || !/^[a-zA-ZñÑáíúéóÁÍÚÉÓ]+(\s*[a-zA-ZñÑáíúéóÁÍÚÉÓ]*)*[a-zA-Z]+$/.test(inputName)){
+    if(inputName == null || inputName.length == 0 || inputName.length > 30 || !/^[a-zA-ZñÑáíúéóÁÍÚÉÓ]+(\s*[a-zA-ZñÑáíúéóÁÍÚÉÓ]*)*[a-zA-ZñÑáíúéóÁÍÚÉÓ]+$/.test(inputName)){
         alert("Revise que el nombre introducido no contenga caracteres especiales");
         return false;
     }
-    if(inputLastName == null || inputLastName.length == 0 || inputLastName.length > 30 || !/^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(inputLastName)){
+    if(inputLastName == null || inputLastName.length == 0 || inputLastName.length > 30 || !/^[a-zA-ZñÑáíúéóÁÍÚÉÓ]+(\s*[a-zA-ZñÑáíúéóÁÍÚÉÓ]*)*[a-zA-ZñÑáíúéóÁÍÚÉÓ]+$/.test(inputLastName)){
         alert("Revise el Apellido introducido no contenga caracteres especiales");
         return false;
     }

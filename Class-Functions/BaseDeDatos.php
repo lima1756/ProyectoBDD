@@ -1,11 +1,12 @@
 <?php
+header("Content-Type: text/html;charset=utf-8");
 class BaseDeDatos {
     private $con;
     //$this->con;
     public function __construct()
     {
         //CADENA DE CONEXION PDO(localhost,nombre de la bd, usuario, contraseña)
-        $this->con = new PDO('mysql:host=localhost; dbname=proyecto',"proyecto","proyecto");
+        $this->con = new PDO('mysql:host=localhost; dbname=proyecto',"proyecto","proyecto", array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES  \'UTF8\''));
     }
     public function muestraTodo()
     {
@@ -23,4 +24,5 @@ class BaseDeDatos {
 		$sql->bindParam(6, $email);
         $sql->execute();
     }
+    public function
 }
