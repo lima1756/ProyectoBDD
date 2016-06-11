@@ -23,34 +23,9 @@ if(isset($_POST['email'])){
 		<script src="JavaScripts/modernizr-custom.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-		<scritp src="JavaScripts/validacionRegistros.js"></script>
+		<script src="JavaScripts/validacionRegistro.js"></script>
 	</head>
 	<body>
-	<!--<script>
-		function validacion(form) {
-			var inputName = document.registro.nombre.value;
-			alert(inputName);
-			var inputLastName = document.registro.apellido.value;
-			var inputUsername = document.registro.usuario.value; 
-			var inputDate = document.registro.fecha.value; 
-			var inputPassword1 = document.registro.pass.value;  
-			var inputPassword2 = document.registro.pass2.value;    
-			var inputEmail = document.registro.email.value;  
-			if(inputName ==NULL || inputName.length == 0 || /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(inputName)){
-				alert("Revise el nombre introducido");
-				return false;
-			}
-			if(inputLastName ==NULL || inputLastName.length == 0 || /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(inputLastName)){
-				alert("Revise el Apellido introducido");
-				return false;
-			}
-			if(inputUsername ==NULL || inputUsername.length < 5 || inputUsername>20 || /^[0-9a-zA-Z]+$/.test(inputUsername)){
-				alert("Revise el usuario introducido, no se aceptam simbolos y debe de ser de tamaño entre 5 y 20");
-				return false;
-			}
-			return true;
-		}
-	</script>-->
 		<header>
 			<div id="buscador">
 				<form>
@@ -60,12 +35,9 @@ if(isset($_POST['email'])){
 				<img src="Images/koncert.jpg" width="200px;">
 			</div>
 		</header>
-		<script type="text/javascript">
-		prueba("aasdf");
-		</script>
 		<div id="formulario">
 			<p>Datos De Registro</p>
-			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="registroK.php">
+			<form name="registro" method="POST" onsubmit="validacion(document.registro)" action="registroK.php">
 				<input type="email" class="text" id="email" name="email" tabindex="1" placeholder="Email" required><br>
 				<input type="text" class="text" id="nombre" name="nombre" tabindex="2" placeholder="Nombre(s)" maxlength="20" required><br>
 				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>
