@@ -5,7 +5,7 @@ class BaseDeDatos {
     public function __construct()
     {
         //CADENA DE CONEXION PDO(localhost,nombre de la bd, usuario, contraseña)
-        $this->con = new PDO('mysql:host=localhost; dbname=proyecto',"root","");
+        $this->con = new PDO('mysql:host=localhost; dbname=proyecto',"proyecto","proyecto");
     }
     public function muestraTodo()
     {
@@ -14,15 +14,13 @@ class BaseDeDatos {
     }
     public function registro($Nombre,$Edad,$Pass,$Usuario,$email,$Apellido)
     {
-        $sql=$this->con->prepare("insert into persona( Nombre,Edad,Pass,Usuario,email,Apellido, admin) values (?,?,?,?,?,?)");
-        
+        $sql=$this->con->prepare("CALL `registroUser`(?,?,?,?,?,?)");
         $sql->bindParam(1, $Nombre);
-        $sql->bindParam(2, $Edad);
+        $sql->bindParam(2, $Apellido);
         $sql->bindParam(3, $Pass);
         $sql->bindParam(4, $Usuario);
-		$sql->bindParam(5, $email);
-        $sql->bindParam(6, $Apellido);		
-		
+        $sql->bindParam(5, $Edad);
+		$sql->bindParam(6, $email);
         $sql->execute();
     }
 }
