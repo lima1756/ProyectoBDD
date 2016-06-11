@@ -31,7 +31,7 @@ function validacion(form) {
         return false;
     }
     if(inputPassword1 == null || !/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_\.]).{8,20})/.test(inputPassword1)){
-        alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula y un numero, puede contener los caracteres especiales '.' y '-' y '_'");
+        alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula, un numero y un caracter especial '.' y '-' y '_'");
         return false;
     }
     if(inputPassword2!=inputPassword1){
