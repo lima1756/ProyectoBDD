@@ -37,7 +37,7 @@ if(isset($_POST['email'])){
 		</header>
 		<div id="formulario">
 			<p>Datos De Registro</p>
-			<form name="registro" method="POST" onsubmit="validacion(document.registro)" action="registroK.php">
+			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="registroK.php">
 				<input type="email" class="text" id="email" name="email" tabindex="1" placeholder="Email" required><br>
 				<input type="text" class="text" id="nombre" name="nombre" tabindex="2" placeholder="Nombre(s)" maxlength="20" required><br>
 				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>
