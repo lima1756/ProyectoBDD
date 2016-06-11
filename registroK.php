@@ -23,8 +23,34 @@ if(isset($_POST['email'])){
 		<script src="JavaScripts/modernizr-custom.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+		<scritp src="JavaScripts/validacionRegistros.js"></script>
 	</head>
 	<body>
+	<!--<script>
+		function validacion(form) {
+			var inputName = document.registro.nombre.value;
+			alert(inputName);
+			var inputLastName = document.registro.apellido.value;
+			var inputUsername = document.registro.usuario.value; 
+			var inputDate = document.registro.fecha.value; 
+			var inputPassword1 = document.registro.pass.value;  
+			var inputPassword2 = document.registro.pass2.value;    
+			var inputEmail = document.registro.email.value;  
+			if(inputName ==NULL || inputName.length == 0 || /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(inputName)){
+				alert("Revise el nombre introducido");
+				return false;
+			}
+			if(inputLastName ==NULL || inputLastName.length == 0 || /^[a-zA-Z]+(\s*[a-zA-Z]*)*[a-zA-Z]+$/.test(inputLastName)){
+				alert("Revise el Apellido introducido");
+				return false;
+			}
+			if(inputUsername ==NULL || inputUsername.length < 5 || inputUsername>20 || /^[0-9a-zA-Z]+$/.test(inputUsername)){
+				alert("Revise el usuario introducido, no se aceptam simbolos y debe de ser de tamaño entre 5 y 20");
+				return false;
+			}
+			return true;
+		}
+	</script>-->
 		<header>
 			<div id="buscador">
 				<form>
@@ -34,27 +60,29 @@ if(isset($_POST['email'])){
 				<img src="Images/koncert.jpg" width="200px;">
 			</div>
 		</header>
-
+		<script type="text/javascript">
+		prueba("aasdf");
+		</script>
 		<div id="formulario">
 			<p>Datos De Registro</p>
-			<form method="POST" action="registroK.php">
-				<input type="email" class="text" id="email" name="email" placeholder="Email" required><br>
-				<input type="text" class="text" id="nombre" name="nombre" placeholder="Nombre(s)" required><br>
-				<input type="text" class="text" id="apellido" name="apellido" placeholder="Apellido(s)" required><br>
-				<input type="text" class="text" id="usuario" name="usuario" placeholder="Usuario" required><br>
+			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="registroK.php">
+				<input type="email" class="text" id="email" name="email" tabindex="1" placeholder="Email" required><br>
+				<input type="text" class="text" id="nombre" name="nombre" tabindex="2" placeholder="Nombre(s)" maxlength="20" required><br>
+				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>
+				<input type="text" class="text" id="usuario" name="usuario" tabindex="4" placeholder="Usuario" maxlength="20" required><br>
 				<script type="text/javascript">
 					if (Modernizr.inputtypes.date) {
-						document.write('<input type="date" class="text" id="fecha" name="fecha" max="2016-06-30" min="1900-01-01" required><br>');
+						document.write('<input type="date" class="text" id="fecha" name="fecha" tabindex="6" max="2016-06-30" min="1900-01-01" required><br>');
 					}
 					else {
 						('forms-ext', {types: 'date'});
 						webshims.polyfill('forms forms-ext');
-						document.write('<input type="date" class="text2" placeholder="Fecha de nacimiento" required/>');
+						document.write('<input type="date" name="fecha" class="text2" placeholder="Fecha de nacimiento" tabindex="6" required/>');
 					} 
 				</script>
-				<input type="password" class="text"  id="pass" name="pass" placeholder="Contraseña" required><br>
-				<input type="password" class="text"  id="pass" name="pass2" placeholder="Confirmar Contraseña" required><br>
-				<input type="submit" id="enviar" name="login" value="Registrarse">
+				<input type="password" class="text"  id="pass" name="pass" tabindex="7" placeholder="Contraseña" required><br>
+				<input type="password" class="text"  id="pass" name="pass2" tabindex="8" placeholder="Confirmar Contraseña" required><br>
+				<input type="submit" id="enviar" name="login" tabindex="9" value="Registrarse">
 			</form> 
 		</div>
 	</body>
