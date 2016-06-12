@@ -8,16 +8,41 @@ header{
 
 #buscador{
 	margin: 20px auto;
-	width: 550px;
-	padding:10px;
+	width: 90%;
+	padding: 10px;
 	height: 100px;
 }
 
 #buscador form{
-float: left;	
-margin-left: 100px;
+
+margin-left: 500px;
 height:30px;
 margin-top: 30px;
+}
+
+#buscador ul {
+display: inline;	
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+#buscador li {
+    float: left;
+}
+
+#buscador li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 40px 16px;
+    text-decoration: none;
+}
+
+#buscador li a:hover {
+    background-color: gray;
 }
 
 #buscador form input{
@@ -28,8 +53,9 @@ margin-top: 30px;
 
 #buscador img{
 
-	float: right;
+	float: left;
 	margin-left: 15px;
+
 	margin-top: 5px;
 }
 
