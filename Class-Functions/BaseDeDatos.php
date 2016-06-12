@@ -15,15 +15,6 @@ class BaseDeDatos {
     }
     public function registro($Nombre,$Edad,$Pass,$Usuario,$email,$Apellido)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-       $sql=$this->con->prepare("insert INTO persona( `Edad`, `Pass`, `Usuario`, `Nombre`, `Apellido`, `Id_Persona`, `email`, `admin`) values ('$Edad','$Pass','$Usuario','$Nombre','$Apellido',NULL,'$email',0)");
-		
-       	
-		
-=======
-=======
->>>>>>> origin/master
         $sql=$this->con->prepare("CALL `registroUser`(?,?,?,?,?,?)");
         $sql->bindParam(1, $Nombre);
         $sql->bindParam(2, $Apellido);
@@ -31,11 +22,6 @@ class BaseDeDatos {
         $sql->bindParam(4, $Usuario);
         $sql->bindParam(5, $Edad);
 		$sql->bindParam(6, $email);
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
         $sql->execute();
     }
-    public function
 }

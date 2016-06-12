@@ -1,42 +1,6 @@
 <!DOCTYPE html>
 <?php
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-
-
-
-
-include("Class-Functions/BaseDeDatos.php");
-if(isset($_POST['email'])){
-$nombre = $_POST['nombre'];
-$fecha = $_POST['fecha'];
-$pass = $_POST['pass'];
-$usuario=$_POST['usuario'];
-$email=$_POST['email'];
-$apellido=$_POST['apellido'];
-
-	$ObjBD= new BaseDeDatos();
-	var_dump($_POST);
-	var_dump($ObjBD);
-	try{
-	
-	$Copy=$ObjBD->registro($nombre,$fecha,$pass,$usuario,$email,$apellido);
-	
-	}
-	catch(PDOException $e)
-    {
-    echo "Error: " . $e->getMessage();
-    }
-}
-=======
 include("Class-Functions/Registro.php");
->>>>>>> origin/master
-=======
-include("Class-Functions/Registro.php");
->>>>>>> origin/master
 ?>
 
 <html lang="es-US">
