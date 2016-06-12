@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <?php
 include("Class-Functions/Registro.php");
 ?>
@@ -20,7 +20,7 @@ include("Class-Functions/Registro.php");
 				<input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
 				<input type="text" name="search" placeholder="Buscar..." id="search">
 				</form>
-				<img src="Images/koncert.jpg" width="200px;">
+				<a href="index.php"><img src="Images/koncert.jpg" width="200px;"></a>
 			</div>
 		</header>
 		<div id="formulario">

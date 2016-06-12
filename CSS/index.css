@@ -94,7 +94,9 @@ border-bottom: 1px solid lightgray;
 }
 
 
-
+#sidebar a{
+	text-decoration: none;
+	color: white;}
 
 #registro{
 	background: #68b6df;
@@ -104,9 +106,15 @@ margin:50px auto;
 border-radius: 5px;
 }
 
-#registro a{
+#registro p{
 	text-decoration: none;
 	color: white;}
+
+#registro:hover{	
+	background-color: #99AACC;
+	color: black;
+	border:1px solid aqua;}
+
 #sesion{
 	background: #68b6df;
 	padding: 10px;
@@ -115,4 +123,12 @@ border-radius: 5px;
 	border-radius: 5px;
 }
 
-#sesion a{text-decoration: none; color: white;}
+#sesion p{
+	text-decoration: none;
+	color: white;}
+
+#sesion:hover{	
+	background-color: #99AACC;
+	color: black;
+	border:1px solid aqua;}
+

@@ -12,7 +12,7 @@
 <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
 <input type="text" name="search" placeholder="Buscar..." id="search">
 </form>
-<img src="Images/koncert.jpg" width="200px;">
+<a href="index.php"><img src="Images/koncert.jpg" width="200px;"></a>
 
 </div>
 </header>
@@ -36,14 +36,17 @@
 </div>
 </section>
 <div id="sidebar">
+<a  href="registroK.php">
 <div id="registro">
-<a href="registroK.php">Registrate</a>
+<p>Registrate</p>
 
 </div>
-
+</a>
+<a href="iniciarK.php">
 <div id="sesion">
-	<a href="iniciarK.php">Iniciar sesion</a>
+	<p>Iniciar sesion</p>
 </div>
+</a>
 </div>
 <script>
 var myIndex = 0;
