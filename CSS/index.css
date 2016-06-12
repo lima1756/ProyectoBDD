@@ -37,6 +37,7 @@ margin-top: 30px;
 border:1px solid white;
 background-color:#68b6df;
 color: black;
+
 }
 
 #boton:hover{
@@ -100,10 +101,11 @@ border-bottom: 1px solid lightgray;
 
 #registro{
 	background: #68b6df;
-padding: 10px;
-width: 70px;
-margin:50px auto;
-border-radius: 5px;
+	padding: 10px;
+	width: 70px;
+	margin:50px auto;
+	border-radius: 5px;
+;
 }
 
 #registro p{
@@ -111,9 +113,8 @@ border-radius: 5px;
 	color: white;}
 
 #registro:hover{	
-	background-color: #99AACC;
-	color: black;
-	border:1px solid aqua;}
+	background-color: #2E9AFE;
+}
 
 #sesion{
 	background: #68b6df;
@@ -121,6 +122,7 @@ border-radius: 5px;
 	width: 70px;
 	margin:50px auto;
 	border-radius: 5px;
+;
 }
 
 #sesion p{
@@ -128,7 +130,6 @@ border-radius: 5px;
 	color: white;}
 
 #sesion:hover{	
-	background-color: #99AACC;
-	color: black;
-	border:1px solid aqua;}
+	background-color: #2E9AFE;
+}
 
