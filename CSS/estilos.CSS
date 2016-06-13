@@ -6,68 +6,56 @@ header{
 	background: white;
 }
 
-#buscador{
-	margin: 20px auto;
-	width: 90%;
-	padding: 10px;
-	height: 100px;
+.contenedor {
+	width: 95%;
+	max-width:1000px;
+	margin:auto;
 }
-
-#buscador form{
-
-margin-left: 500px;
-height:30px;
-margin-top: 30px;
+ 
+.contenedor p {
+	margin-bottom:40px;
 }
-
-#buscador ul {
-display: inline;	
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: white;
+ 
+header nav {
+	background:#3498db;
+	margin-bottom:20px;
 }
-
-#buscador li {
-    float: left;
+ 
+header nav ul {
+	list-style: none;
+	overflow: hidden;
 }
-
-#buscador li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 40px 16px;
-    text-decoration: none;
-}
-
-#buscador li a:hover {
-    background-color: gray;
-}
-
-#buscador form input{
-
-	height:30px;
-	padding: 5px;
-}
-
-#buscador img{
-
+ 
+header nav ul li {
 	float: left;
-	margin-left: 15px;
-
-	margin-top: 5px;
 }
-
+ 
+header nav ul li a {
+	display: block;
+	padding:20px;
+	color:#fff;
+	text-decoration: none;
+}
+ 
+header nav ul li a:hover {
+	background:#2980b9;
+}
+ 
+ 
 /* --- Clase que agregaremos cuando el usuario haga scroll --- */
 .menu-fixed {
 	position:fixed;
 	z-index:1000;
 	top:0;
-	max-width:1000px;
+	/*max-width:1000px;*/
+	left:0;
 	width:100%;
 	box-shadow:0px 4px 3px rgba(0,0,0,.5);
 }
+
+
+
+
 
 #boton{
 border:1px solid white;
@@ -172,4 +160,3 @@ border-bottom: 1px solid lightgray;
 	background-color: #2E9AFE;
 	border-radius: 100px;
 }
-
