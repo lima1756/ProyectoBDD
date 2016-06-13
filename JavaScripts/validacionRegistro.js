@@ -30,19 +30,12 @@ function validacion(form) {
         alert("La fecha de nacimiento no puede ser mayor a la de hoy ni menor a la del primero de enero de 1900");
         return false;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
     if(inputPassword1 == null || !/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_\.]).{8,20})/.test(inputPassword1)){
         alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula, un numero y un caracter especial '.' y '-' y '_'");
->>>>>>> origin/master
-=======
-    if(inputPassword1 == null || !/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_\.]).{8,20})/.test(inputPassword1)){
-        alert("La contraseña debe de ser de minimo 8 caracteres, contener al menos una letra minuscula, una mayuscula, un numero y un caracter especial '.' y '-' y '_'");
->>>>>>> origin/master
         return false;
     }
+    
     if(inputPassword2!=inputPassword1){
         alert("La confirmación de contraseña es incorrecta, vuelva a intentar");
         return false;

@@ -10,8 +10,7 @@ class BaseDeDatos {
     }
     public function muestraTodo()
     {
-     $r=$this->con->query("SELECT * FROM persona");
-        return $r->fetchAll(PDO::FETCH_ASSOC);
+     
     }
     public function registro($Nombre,$Edad,$Pass,$Usuario,$email,$Apellido)
     {
@@ -23,5 +22,13 @@ class BaseDeDatos {
         $sql->bindParam(5, $Edad);
 		$sql->bindParam(6, $email);
         $sql->execute();
+    }
+    public function verificarUsuario($Usuario) {
+        $sql=$this->con->query("CALL revisarUsuario('$Usuario')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function verificarCorreo($Correo) {
+        $sql=$this->con->query("CALL  revisarCorreo('$Correo')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }

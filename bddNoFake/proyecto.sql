@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2016 at 06:22 PM
+-- Generation Time: Jun 14, 2016 at 01:32 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -24,7 +24,16 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
+SELECT COUNT(persona.Usuario) FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser` (IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))  INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarCorreo` (IN `correo` VARCHAR(30))  NO SQL
+SELECT COUNT(persona.email) as exist from persona where email=correo$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarUsuario` (IN `username` VARCHAR(10))  NO SQL
+SELECT COUNT(persona.Usuario) as exist from persona where persona.Usuario=username$$
 
 DELIMITER ;
 
@@ -235,7 +244,7 @@ ALTER TABLE `concierto`
 -- AUTO_INCREMENT for table `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `Id_Persona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id_Persona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `recibo`
 --

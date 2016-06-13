@@ -1,7 +1,5 @@
 ﻿<!DOCTYPE html>
-<?php
-include("Class-Functions/Registro.php");
-?>
+
 
 <html lang="es-US">
 	<head>
