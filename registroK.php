@@ -18,7 +18,7 @@
 				<input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
 				<input type="text" name="search" placeholder="Buscar..." id="search">
 				</form>
-				<a href="index.php"><img src="Images/koncert.jpg" width="200px;"></a>
+				<a href="index.php"><img src="Images/koncert.png" width="200px;"></a>
 			</div>
 		</header>
 		<div id="formulario">
