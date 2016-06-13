@@ -31,7 +31,7 @@
 <header>
 		<div class="contenedor">
 			<div class="logo">
-				<img src="Images/koncert.jpg" width="200px;">
+				<img src="Images/koncert.jpg" width="250px;">
 			
             <form>
                 <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
@@ -44,13 +44,7 @@
                      <li><a href="index.php"><img src="Images/koncert.jpg" width="100px;"></a></li>
 					<li><a href="index.php">Agenda</a></li>
                     <li><a href="index.php">Eventos</a></li>
-                    <li><a href="index.php">Instalaciones</a></li>
-                    <li><form>
-                     <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
-                     <input type="text" name="search" placeholder="Buscar..." id="search">
-                    </form>
-                    </li>
-                    
+                    <li><a href="index.php">Instalaciones</a></li>          
                    
 				</ul>
 			</nav>
