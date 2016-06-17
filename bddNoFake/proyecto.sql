@@ -32,7 +32,7 @@ INSERT INTO agenda(Fecha_inicio, Fecha_fin, id_Concierto) VALUES (inicio, fin, l
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
-SELECT COUNT(persona.Usuario) FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
+SELECT COUNT(persona.Usuario) AS exist FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser` (IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))  INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$
 
@@ -41,6 +41,9 @@ SELECT COUNT(persona.email) as exist from persona where email=correo$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarUsuario` (IN `username` VARCHAR(10))  NO SQL
 SELECT COUNT(persona.Usuario) as exist from persona where persona.Usuario=username$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `userData` (IN `usr` VARCHAR(10))  NO SQL
+SELECT persona.Nombre as name, persona.admin as val FROM persona where persona.Usuario=usr$$
 
 DELIMITER ;
 

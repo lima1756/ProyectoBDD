@@ -35,4 +35,8 @@ class BaseDeDatos {
         $sql=$this->con->query("CALL login('$Usuario', '$Pass')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function sessionData($Usuario) {
+        $sql=$this->con->query("CALL userData('$Usuario')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
