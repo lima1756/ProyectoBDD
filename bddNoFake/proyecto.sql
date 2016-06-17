@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2016 at 01:32 AM
+-- Generation Time: Jun 17, 2016 at 04:07 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,11 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `proyecto`
 --
-
+CREATE DATABASE IF NOT EXISTS proyecto;
+USE proyecto;
 DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `agregarConcierto` (IN `name` VARCHAR(20), IN `descr` TEXT, IN `artista` VARCHAR(20), IN `genero` VARCHAR(20), IN `image` VARCHAR(20), IN `inicio` DATETIME, IN `fin` DATETIME)  SQL SECURITY INVOKER
+BEGIN
+INSERT INTO concierto(Nombre, Descripcion, Artista, Genero, img) values (name, descr, artista, genero, image); 
+INSERT INTO agenda(Fecha_inicio, Fecha_fin, id_Concierto) VALUES (inicio, fin, last_insert_id());
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
 SELECT COUNT(persona.Usuario) FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
 
@@ -46,8 +53,20 @@ DELIMITER ;
 CREATE TABLE `agenda` (
   `Fecha_inicio` datetime NOT NULL,
   `id_Registro` int(10) UNSIGNED NOT NULL,
-  `Fecha_fin` datetime NOT NULL
+  `Fecha_fin` datetime NOT NULL,
+  `id_Concierto` int(10) UNSIGNED NOT NULL,
+  `Finalizado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `agenda`
+--
+
+INSERT INTO `agenda` (`Fecha_inicio`, `id_Registro`, `Fecha_fin`, `id_Concierto`, `Finalizado`) VALUES
+('2016-06-18 00:00:00', 2, '2016-08-19 00:00:00', 5, 0),
+('2016-06-17 00:00:00', 3, '2016-06-17 00:00:00', 9, 0),
+('2016-06-15 00:00:00', 8, '2016-06-15 00:00:00', 16, 1),
+('2016-06-18 00:00:00', 9, '2016-06-19 00:00:00', 17, 0);
 
 -- --------------------------------------------------------
 
@@ -73,7 +92,8 @@ CREATE TABLE `boleto` (
   `Folio_Compra` int(10) UNSIGNED NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `id_Asiento` int(10) UNSIGNED NOT NULL,
-  `id_Persona` int(10) UNSIGNED NOT NULL
+  `id_Persona` int(10) UNSIGNED NOT NULL,
+  `id_Concierto` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -84,12 +104,30 @@ CREATE TABLE `boleto` (
 
 CREATE TABLE `concierto` (
   `Nombre` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Descripcion` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Descripcion` text COLLATE utf8_unicode_ci NOT NULL,
   `id_Concierto` int(10) UNSIGNED NOT NULL,
   `Artista` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Genero` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `img` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `concierto`
+--
+
+INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Genero`, `img`) VALUES
+('asdf', 'zxcv', 5, 'qwer', 'yterty', 'rtyrtye'),
+('123', '456', 9, '789', '147', '258'),
+('qwer', 'asdf', 16, 'zxcv', 'poiu', 'hjklñ'),
+('a....', '....', 17, '.....', '.....', '.....');
+
+--
+-- Triggers `concierto`
+--
+DELIMITER $$
+CREATE TRIGGER `estadoConcierto` AFTER INSERT ON `concierto` FOR EACH ROW UPDATE agenda Set agenda.Finalizado=1 WHERE agenda.Fecha_fin < NOW()
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -100,17 +138,6 @@ CREATE TABLE `concierto` (
 CREATE TABLE `de` (
   `id_Zona` int(10) UNSIGNED NOT NULL,
   `id_Concierto` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guardado_en`
---
-
-CREATE TABLE `guardado_en` (
-  `id_Concierto` int(10) UNSIGNED NOT NULL,
-  `id_Registro` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -149,10 +176,12 @@ INSERT INTO `persona` (`Edad`, `Pass`, `Usuario`, `Nombre`, `Apellido`, `Id_Pers
 --
 
 CREATE TABLE `recibo` (
-  `Forma_Pago` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `tarjetaCredito` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Banco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Folio_Compra` int(10) UNSIGNED NOT NULL
+  `Folio_Compra` int(10) UNSIGNED NOT NULL,
+  `CCV` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `Vencimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -164,7 +193,8 @@ CREATE TABLE `recibo` (
 CREATE TABLE `zona` (
   `Precio` int(10) UNSIGNED NOT NULL,
   `id_Zona` int(10) UNSIGNED NOT NULL,
-  `Ubicacion` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `Ubicacion` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Cupo` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -194,7 +224,8 @@ ALTER TABLE `boleto`
 -- Indexes for table `concierto`
 --
 ALTER TABLE `concierto`
-  ADD PRIMARY KEY (`id_Concierto`);
+  ADD PRIMARY KEY (`id_Concierto`),
+  ADD UNIQUE KEY `Nombre` (`Nombre`);
 
 --
 -- Indexes for table `persona`
@@ -224,7 +255,7 @@ ALTER TABLE `zona`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_Registro` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Registro` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `asiento`
 --
@@ -239,12 +270,12 @@ ALTER TABLE `boleto`
 -- AUTO_INCREMENT for table `concierto`
 --
 ALTER TABLE `concierto`
-  MODIFY `id_Concierto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Concierto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `Id_Persona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Id_Persona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `recibo`
 --
