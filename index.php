@@ -31,7 +31,7 @@
 <header>
 		<div class="contenedor">
 			<div class="logo">
-				<img src="Images/koncert.jpg" width="250px;">
+				<img src="Images/koncert.jpg" width="300px;">
 			
             <form>
                 <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
