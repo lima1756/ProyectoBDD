@@ -6,6 +6,12 @@ header{
 	background: white;
 }
 
+.cuerpo {
+	margin-top: 90px;
+}
+.search{
+	margin-top:32px;
+}
 .contenedor {
 	width: 95%;
 	max-width:1000px;

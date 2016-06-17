@@ -31,7 +31,7 @@ class BaseDeDatos {
         $sql=$this->con->query("CALL revisarCorreo('$Correo')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function verificarLogIn($Usuario, $Pass) {
+    public function verificarLogIn($Usuario, $Pass) {  
         $sql=$this->con->query("CALL login('$Usuario', '$Pass')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }

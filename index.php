@@ -9,30 +9,25 @@
     
 </head>
 <body>
-    <!--
-<header>
-<div id="buscador">
-<a href="index.php"><img src="Images/koncert.jpg" width="200px;"></a>
-<nav>
-<ul>
-<li><a href="index.php">Agenda</a></li>
-<li><a href="index.php">Eventos</a></li>
-<li><a href="index.php">Instalaciones</a></li>
-</ul>
-</nav>
-<form>
-<input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
-<input type="text" name="search" placeholder="Buscar..." id="search">
-</form>
+                <!--
+            <header>
+            <div id="buscador">
+            <a href="index.php"><img src="Images/koncert.jpg" width="200px;"></a>
+            <nav>
+            <ul>
+            <li><a href="index.php">Agenda</a></li>
+            <li><a href="index.php">Eventos</a></li>
+            <li><a href="index.php">Instalaciones</a></li>
+            </ul>
+            </nav>
 
 
-</div>
-</header>-->
+
+            </div>
+            </header>-->
+<div class="contenedor">
 <header>
-		<div class="contenedor">
-			<div class="logo">
-				<img src="Images/koncert.jpg" width="300px;">
-			
+			<div class="logo">			
             <form>
                 <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
                 <input type="text" name="search" placeholder="Buscar..." id="search">
@@ -44,70 +39,61 @@
                      <li><a href="index.php"><img src="Images/koncert.png" width="100px;"></a></li>
 					<li><a href="index.php">Agenda</a></li>
                     <li><a href="index.php">Eventos</a></li>
-                    <li><a href="index.php">Instalaciones</a></li>          
-                   
+                    <li><a href="index.php">Instalaciones</a></li>    
+                    <li><form class="search">
+                        <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
+                        <input type="text" name="search" placeholder="Buscar..." id="search">
+                    </form></li>
 				</ul>
 			</nav>
+            
 		</div>
 </header>
 
 
-
-<section>
-<div id="slide-container">
-<div id="slide">
-	
-
-
-
-
-<div class="w3-content w3-section" style="max-width:500px">
-  
-  <img class="mySlides" src="Images/metallica.png" style="width:52%">
-  <img class="mySlides" src="Images/Concierto.jpg" style="width:70%">
-</div>
-
-	</div>
-<p>PROXIMOS EVENTOS</p>
-
-</div>
-</section>
+<div class="cuerpo">
+    <section>
+        <div id="slide-container">
+            <div id="slide">
+                <div class="w3-content w3-section" style="max-width:500px">
+                    <img class="mySlides" src="Images/metallica.png" style="width:52%">
+                    <img class="mySlides" src="Images/Concierto.jpg" style="width:70%">
+                </div>
+            </div>
+        <p>PROXIMOS EVENTOS</p>
+        </div>
+    </section>
 <div id="sidebar">
-<a  href="registroK.php">
-<div id="registro">
-<p>Registrate</p>
-
-</div>
-</a>
+<?php session_start(); ?>
+ 
+<?php if(!isset($_SESSION['name'])): ?>
+    <a  href="registroK.php">
+        <div id="registro">
+            <p>Registrate</p>
+        </div>
+    </a>
 <a href="iniciarK.php">
-<div id="sesion">
-	<p>Iniciar sesion</p>
-</div>
+    <div id="sesion">
+        <p>Iniciar sesion</p>
+    </div>
 </a>
+<?php endif;?>
 </div>
 <script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
+    var myIndex = 0;
+    carousel();
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 2000); // Change image every 2 seconds
     }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 </script>
-
-
-
-
-
-
-
-
+</div>
 </body>
 </html>

@@ -4,12 +4,14 @@ if(isset($_POST['usuario'])){
 	$ObjBD= new BaseDeDatos();
     if(verificar()){
 		try{
-			$existe=$ObjBD->login($_POST['usuario'], $_POST['pass']);
+			$existe=$ObjBD->verificarLogIn($_POST['usuario'], $_POST['pass']);
 			if($existe[0]['exist']=='1'){
                 session_start();
                 $datos=datosDeSesion($ObjBD);
-                $_SESSION['name']=$datos['name'];
-                $_SESSION['adm']=$datos['val'];
+                $_SESSION['name']=$datos[0]['name'];
+                $_SESSION['adm']=$datos[0]['val'];
+                echo $_SESSION['name'];
+                //header('Location: ../index.php');
 			}
 		}
 		catch(PDOException $e)
@@ -24,12 +26,12 @@ function verificar(){
     $inputPassword = $_POST["pass"];  
 
 	if($inputUsername == null || !preg_match("/^[0-9a-zA-Z]+$/", $inputUsername)){
-        echo "Revise el usuario introducido";
+        echo "Revise los datos introducido";
         return false;
     }
     
     if($inputPassword == null || !preg_match("/[0-9a-zA-Z-_\.]/", $inputPassword)){
-        echo "Verifique la contraseña introducida";
+        echo "Verifique los datos introducidos";
         return false;
     }
     return true;

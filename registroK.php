@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 
-
 <html lang="es-US">
 	<head>
 		<title>Registrarse</title>
