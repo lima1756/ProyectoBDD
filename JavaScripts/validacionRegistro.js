@@ -40,5 +40,6 @@ function validacion(form) {
         alert("La confirmación de contraseña es incorrecta, vuelva a intentar");
         return false;
     }
+
     return true;
 }

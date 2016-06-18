@@ -17,7 +17,10 @@ if(isset($_POST['email'])){
 			}
 			if($a==0){
 					$ObjBD->registro($_POST['nombre'],$_POST['fecha'],$_POST['pass'],$_POST['usuario'],$_POST['email'],$_POST['apellido']);
-					//header('Location: ../iniciark.php');
+						//header('Location: /proyectoBDD/registrok.php');	
+							
+					//header('Location: /proyectoBDD/iniciark.php');
+					
 			}
 		}
 		catch(PDOException $e)
