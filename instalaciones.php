@@ -40,10 +40,9 @@ include("Class-Functions/BaseDeDatos.php");
 
 
 <div class="cuerpo">
-    <section>
-        <?php
-        echo "holi";
-        ?>
+    <section class="instalaciones">
+    <img src="images/mapa.png" height="300" width="300">
+    <img src="images/descripcion.png" height="300" width="200">
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
