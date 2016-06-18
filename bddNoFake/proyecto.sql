@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-06-2016 a las 20:16:53
+-- Tiempo de generación: 18-06-2016 a las 20:40:04
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -31,6 +31,12 @@ INSERT INTO concierto(Nombre, Descripcion, Artista, Genero, img) values (name, d
 INSERT INTO agenda(Fecha_inicio, Fecha_fin, id_Concierto) VALUES (inicio, fin, last_insert_id());
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conciertos`()
+    NO SQL
+SELECT nombre, descripcion, Artista, Genero, img, Fecha_fin, Fecha_inicio
+FROM concierto
+INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages`()
     NO SQL
 SELECT concierto.img FROM concierto LEFT JOIN  (
@@ -47,7 +53,10 @@ SELECT COUNT(persona.Usuario) AS exist FROM persona WHERE persona.Usuario=userna
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerAgenda`()
     NO SQL
-select * from agenda where agenda.finalizado=0$$
+SELECT Fecha_inicio, Fecha_fin, concierto.Nombre
+FROM agenda
+INNER JOIN concierto ON agenda.id_Concierto = concierto.id_Concierto
+WHERE agenda.finalizado =0$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser`(IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))
 INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$

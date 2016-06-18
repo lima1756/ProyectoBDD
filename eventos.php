@@ -42,7 +42,8 @@ include("Class-Functions/BaseDeDatos.php");
 <div class="cuerpo">
     <section>
         <?php
-        echo "holi";
+                $ObjBD= new BaseDeDatos();
+                $array=$ObjBD->eventos();
         ?>
     </section>
 <div id="sidebar">

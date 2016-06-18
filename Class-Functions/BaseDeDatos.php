@@ -55,4 +55,9 @@ class BaseDeDatos {
         $sql=$this->con->query("CALL ObtenerAgenda()");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+            
+    public function eventos() {
+        $sql=$this->con->query("CALL conciertos()");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
