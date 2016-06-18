@@ -44,8 +44,34 @@ include("Class-Functions/BaseDeDatos.php");
         <?php
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->agenda();
-                
         ?>
+                <table border="1px">
+                    <tr>
+                        <td>
+                            Nombre
+                        </td>
+                        <td>
+                            Fecha inicio
+                        </td>
+                        <td>
+                            Fecha fin
+                        </td>                        
+                    </tr>
+                    <?php foreach($array as $array){ ?>
+                    <tr>
+                        <td>
+                            <?php echo $array['Nombre']; ?>
+                        </td>
+                        <td>
+                            <?php echo $array['Fecha_inicio']; ?>
+                        </td>
+                        <td>
+                            <?php echo $array['Fecha_fin']; ?>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
+                    
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
