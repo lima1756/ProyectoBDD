@@ -50,4 +50,9 @@ class BaseDeDatos {
         $sql=$this->con->query("CALL getImages()");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+        public function agenda() {
+        $sql=$this->con->query("CALL ObtenerAgenda()");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
