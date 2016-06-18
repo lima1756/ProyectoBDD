@@ -62,9 +62,9 @@ include("Class-Functions/BaseDeDatos.php");
                     <?php
                     $ObjBD= new BaseDeDatos();
                     $img=$ObjBD->pictures();
-                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'.png" style="width:52%">';
-                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'.png" style="width:52%">';
-                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'.png" style="width:52%">';
+                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'.png" style="width:100%">';
+                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'.png" style="width:100%">';
+                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'.png" style="width:100%">';
                      ?>
                 </div>
             </div>
@@ -85,30 +85,24 @@ include("Class-Functions/BaseDeDatos.php");
         </div>
     </a>
 <?php else: ?>
+<p class="session">Bienvenido, <?php echo $_SESSION['name']?></p>
     <?php if(!$_SESSION['adm']): ?>
-        <p class="session">Bienvenido, <?php echo $_SESSION['name']?></p>
         <a href="myTickets.php">
         <div id="btn">
             <p>Ver tus boletos</p>
         </div>
-        <a href="Class-Functions/LogOut.php">
-        <div id="btn">
-            <p>Cerrar Sesión</p>
-        </div>
-        </a>
     <?php else: ?>
-        <p class="session">Bienvenido, <?php echo $_SESSION['name']?></p>
         <a href="nuevoConcierto.php">
         <div id="btn">
             <p>Agregar concierto</p>
         </div>
     </a>
-    <a href="Class-Functions/LogOut.php">
+    <?php endif; ?>
+        <a href="Class-Functions/LogOut.php">
         <div id="btn">
             <p>Cerrar Sesión</p>
         </div>
         </a>
-    <?php endif; ?>
 <?php endif;?>
 </div>
 <script>
