@@ -41,22 +41,9 @@ include("Class-Functions/BaseDeDatos.php");
 
 <div class="cuerpo">
     <section>
-        <div id="slide-container">
-            <div id="slide">
-                <div class="w3-content w3-section" style="max-width:500px">
-                    <?php
-                    $ObjBD= new BaseDeDatos();
-                    $img=$ObjBD->pictures();
-                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'.png" style="width:100%">';
-                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'.png" style="width:100%">';
-                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'.png" style="width:100%">';
-                     ?>
-                </div>
-            </div>
-        <p>PROXIMOS EVENTOS</p>
-        </div>
-
-        </div>    
+        <?php
+        echo "holi";
+        ?>
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
@@ -92,21 +79,6 @@ include("Class-Functions/BaseDeDatos.php");
         </a>
 <?php endif;?>
 </div>
-<script>
-    var myIndex = 0;
-    carousel();
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 2000); // Change image every 2 seconds
-    }
-</script>
 </div>
 
 </body>
