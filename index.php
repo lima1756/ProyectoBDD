@@ -25,9 +25,9 @@ include("Class-Functions/BaseDeDatos.php");
 			<nav class="menu-fixed">
 				<ul>
                      <li><a href="index.php"><img src="Images/koncert.png" width="100px;"></a></li>
-					<li><a href="index.php">Agenda</a></li>
+					<li><a href="agenda.php">Agenda</a></li>
                     <li><a href="eventos.php">Eventos</a></li>
-                    <li><a href="index.php">Instalaciones</a></li>    
+                    <li><a href="instalaciones.php">Instalaciones</a></li>    
                     <li><form class="search">
                         <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
                         <input type="text" name="search" placeholder="Buscar..." id="search">
