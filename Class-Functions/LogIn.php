@@ -10,10 +10,10 @@ if(isset($_POST['usuario'])){
                 $datos=datosDeSesion($ObjBD);
                 $_SESSION['name']=$datos[0]['name'];
                 $_SESSION['adm']=$datos[0]['val'];
-                echo $_SESSION['name'];
-                //header('Location: ../index.php');
+                $_SESSION['user']=$_POST['usuario'];
+                header('Location: ../index.php');
 			}
-		}
+		}   
 		catch(PDOException $e)
 		{
 		echo "Error: " . $e->getMessage();

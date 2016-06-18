@@ -129,27 +129,7 @@ border-bottom: 1px solid lightgray;
 	text-decoration: none;
 	color: white;}
 
-#registro{
-	background: #68b6df;
-	padding: 10px;
-	width: 70px;
-	margin:50px auto;
-	border-radius: 5px;
-	transition: border-radius 0.7s;
-;
-}
-
-#registro p{
-	text-decoration: none;
-	color: white;
-}
-
-#registro:hover{	
-	background-color: #2E9AFE;
-	border-radius: 100px;
-}
-
-#sesion{
+#btn{
 	background: #68b6df;
 	padding: 10px;
 	width: 70px;
@@ -158,11 +138,11 @@ border-bottom: 1px solid lightgray;
 	transition: border-radius 0.7s;
 }
 
-#sesion p{
+#btn p{
 	text-decoration: none;
 	color: white;}
 
-#sesion:hover{	
+#btn:hover{	
 	background-color: #2E9AFE;
 	border-radius: 100px;
 }

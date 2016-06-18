@@ -73,18 +73,42 @@ include("Class-Functions/BaseDeDatos.php");
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
- 
 <?php if(!isset($_SESSION['name'])): ?>
     <a  href="registroK.php">
-        <div id="registro">
-            <p>Registrate</p>
+            <div id="btn">
+                <p>Registrate</p>
+            </div>
+        </a>
+    <a href="iniciarK.php">
+        <div id="btn">
+            <p>Iniciar sesion</p>
         </div>
     </a>
-<a href="iniciarK.php">
-    <div id="sesion">
-        <p>Iniciar sesion</p>
-    </div>
-</a>
+<?php else: ?>
+    <?php if(!$_SESSION['adm']): ?>
+        <p class="session">Bienvenido, <?php echo $_SESSION['name']?></p>
+        <a href="myTickets.php">
+        <div id="btn">
+            <p>Ver tus boletos</p>
+        </div>
+        <a href="Class-Functions/LogOut.php">
+        <div id="btn">
+            <p>Cerrar Sesión</p>
+        </div>
+        </a>
+    <?php else: ?>
+        <p class="session">Bienvenido, <?php echo $_SESSION['name']?></p>
+        <a href="nuevoConcierto.php">
+        <div id="btn">
+            <p>Agregar concierto</p>
+        </div>
+    </a>
+    <a href="Class-Functions/LogOut.php">
+        <div id="btn">
+            <p>Cerrar Sesión</p>
+        </div>
+        </a>
+    <?php endif; ?>
 <?php endif;?>
 </div>
 <script>
