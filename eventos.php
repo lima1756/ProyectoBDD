@@ -45,6 +45,40 @@ include("Class-Functions/BaseDeDatos.php");
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->eventos();
         ?>
+        
+        <?php foreach($array as $array){ ?>        
+            <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
+            </br>
+            </br>
+            <?php echo '<img src="Images/'.$array['img'].'.png" width="300px" heigh="300px">'; ?>
+            </br>
+            </br>
+            Genero: 
+            <?php echo $array['Genero']; ?>
+            </br>
+            </br>
+            Artista(s):
+            <?php echo $array['Artista']; ?>
+            </br>
+            </br>
+            Fecha de inicio: 
+            <?php echo $array['Fecha_inicio']; ?>
+            </br>
+            </br>
+            Fecha de clausura: 
+            <?php echo $array['Fecha_fin']; ?>
+            </br>
+            </br>                        
+            <?php echo $array['descripcion']; ?>
+            </br>
+            </br>
+    <a  href="sdfasdf">Obten tu boleto</a>
+    </br>
+    </br>
+    <hr>
+        <?php } ?>
+
+                    
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
