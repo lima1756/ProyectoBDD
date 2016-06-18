@@ -5,7 +5,7 @@ function validacion(form) {
     var maxDate = new Date();
     var minDate = new Date(1900,01,01);
     var inputDate = new Date(form.elements["fecha"].value);
-    var inputPassword1 = form.elements[7].value;  
+    var inputPassword1 = form.elements["pass1"].value;  
     var inputPassword2 = form.elements["pass2"].value;    
     var inputEmail = form.elements["email"].value; 
     if(inputName == null || inputName.length == 0 || inputName.length > 30 || !/^[a-zA-ZñÑáíúéóÁÍÚÉÓ]+(\s*[a-zA-ZñÑáíúéóÁÍÚÉÓ]*)*[a-zA-ZñÑáíúéóÁÍÚÉÓ]+$/.test(inputName)){
