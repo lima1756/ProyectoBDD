@@ -8,10 +8,12 @@ class BaseDeDatos {
         //CADENA DE CONEXION PDO(localhost,nombre de la bd, usuario, contraseña)
         $this->con = new PDO('mysql:host=localhost; dbname=proyecto',"proyecto","proyecto", array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES  \'UTF8\''));
     }
-    public function muestraTodo()
+   
+    /*public function muestraTodo()
     {
      
-    }
+    }*/
+    
     public function registro($Nombre,$Edad,$Pass,$Usuario,$email,$Apellido)
     {
         $sql=$this->con->prepare("CALL `registroUser`(?,?,?,?,?,?)");
@@ -23,20 +25,29 @@ class BaseDeDatos {
 		$sql->bindParam(6, $email);
         $sql->execute();
     }
+   
     public function verificarUsuario($Usuario) {
         $sql=$this->con->query("CALL revisarUsuario('$Usuario')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+   
     public function verificarCorreo($Correo) {
         $sql=$this->con->query("CALL revisarCorreo('$Correo')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public function verificarLogIn($Usuario, $Pass) {  
         $sql=$this->con->query("CALL login('$Usuario', '$Pass')");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+   
     public function sessionData($Usuario) {
         $sql=$this->con->query("CALL userData('$Usuario')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function pictures() {
+        $sql=$this->con->query("CALL getImages()");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }

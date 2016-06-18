@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+include("Class-Functions/BaseDeDatos.php"); 
+?>
 <html lang="es-US">
 <head>
     <meta charset="UTF-8">
@@ -56,8 +59,13 @@
         <div id="slide-container">
             <div id="slide">
                 <div class="w3-content w3-section" style="max-width:500px">
-                    <img class="mySlides" src="Images/metallica.png" style="width:52%">
-                    <img class="mySlides" src="Images/Concierto.jpg" style="width:70%">
+                    <?php
+                    $ObjBD= new BaseDeDatos();
+                    $img=$ObjBD->pictures();
+                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'.png" style="width:52%">';
+                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'.png" style="width:52%">';
+                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'.png" style="width:52%">';
+                     ?>
                 </div>
             </div>
         <p>PROXIMOS EVENTOS</p>

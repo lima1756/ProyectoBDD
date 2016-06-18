@@ -32,6 +32,15 @@ INSERT INTO concierto(Nombre, Descripcion, Artista, Genero, img) values (name, d
 INSERT INTO agenda(Fecha_inicio, Fecha_fin, id_Concierto) VALUES (inicio, fin, last_insert_id());
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages` ()  NO SQL
+SELECT concierto.img FROM concierto LEFT JOIN  (
+    SELECT agenda.id_Concierto AS id FROM agenda 
+    WHERE agenda.Finalizado=0
+    ORDER BY agenda.Fecha_inicio ASC LIMIT 0,3
+) AS subtable
+    ON concierto.id_Concierto = subtable.id
+    WHERE concierto.id_Concierto = subtable.id$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
 SELECT COUNT(persona.Usuario) AS exist FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
 
@@ -121,9 +130,9 @@ CREATE TABLE `concierto` (
 
 INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Genero`, `img`) VALUES
 ('asdf', 'zxcv', 5, 'qwer', 'yterty', 'rtyrtye'),
-('123', '456', 9, '789', '147', '258'),
+('123', '456', 9, '789', '147', 'descarga (1)'),
 ('qwer', 'asdf', 16, 'zxcv', 'poiu', 'hjklñ'),
-('a....', '....', 17, '.....', '.....', '.....');
+('a....', '....', 17, 'metallica', '.....', 'metallica');
 
 --
 -- Triggers `concierto`
