@@ -2,13 +2,13 @@
 
 <html lang="es-US">
 	<head>
-		<title>Registrarse</title>
+		<title>Agregar Concierto</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="CSS/registroK.css">
+		<link rel="stylesheet" type="text/css" href="CSS/nuevoConcierto.css">
 		<script src="JavaScripts/modernizr-custom.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
-		<script src="JavaScripts/validacionRegistro.js"></script>
+		<script src="JavaScripts/js-webshim/minified/polyfiller.js"></script>
+		<script src="JavaScripts/validacionConcierto.js"></script>		
 	</head>
 	<body>
 		<header>
@@ -21,26 +21,36 @@
 			</div>
 		</header>
 		<div id="formulario">
-			<p>Datos De Registro</p>
-			<form name="registro" method="POST" onsubmit="return validacion(document.registro)" action="Class-Functions/Registro.php">
-				<input type="email" class="text" id="email" name="email" tabindex="1" placeholder="Email" required><br>
-				<input type="text" class="text" id="nombre" name="nombre" tabindex="2" placeholder="Nombre(s)" maxlength="30" required><br>
-				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>
-				<input type="text" class="text" id="usuario" name="usuario" tabindex="4" placeholder="Usuario" minlength="5" maxlength="20" required><br>
+			<p>Datos del concierto a agregar:</p>
+			<form name="newConcert" enctype="multipart/form-data" method="POST" onsubmit="return validacion(document.newConcert)" action="Class-Functions/newConcert.php">
+				<input type="text" class="text" id="title" name="title" tabindex="1" placeholder="Nombre del concierto" required><br>
+				<textarea class="text" name="Descripcion" rows="5" cols="30" tabindex="2" placeholder="Descripción del Concierto"></textarea>
+				<input type="text" class="text" id="artista" name="artista" tabindex="2" placeholder="Artista" maxlength="20" required><br>
+				<input type="text" class="text" id="genero" name="genero" tabindex="3" placeholder="Genero" maxlength="20" required><br>
+				<input type="text" class="text" id="usuario" name="imagen" tabindex="4" placeholder="Nombre de la imagen con extensión." maxlength="20" required><br>
+				<input name="imagen" class="text" type="file" required>
 				<script type="text/javascript">
+					var hoy = new Date().toJSON().slice(0,10);
 					if (Modernizr.inputtypes.date) {
-						document.write('<p class="fecha">Fecha de nacimiento:</p>')
-						document.write('<input type="date" class="text" id="fecha" name="fecha" tabindex="6" max="2016-06-30" min="1900-01-01" required><br>');
+						document.write('<p class="fecha">Fecha y hora de inicio:</p>');
+						document.write('<input type="datetime-local" class="text" id="inicio" name="inicio" tabindex="6" max="2030-01-01" min="'+hoy+'" required><br>');
 					}
 					else {
 						('forms-ext', {types: 'date'});
 						webshims.polyfill('forms forms-ext');
-						document.write('<input type="date" name="fecha" class="text2" placeholder="Fecha de nacimiento" tabindex="6" required/>');
+						document.write('<input type="datetime-local" name="inicio" class="text" placeholder="Fecha y hora de inicio" tabindex="6" required/>');
 					} 
+					if (Modernizr.inputtypes.date) {
+						document.write('<p class="fecha">Fecha y hora de fin:</p>');
+						document.write('<input type="datetime-local" class="text" id="fin" name="fin" tabindex="7" max="2030-01-01" min="'+hoy+'" required><br>');
+					}
+					else {
+						('forms-ext', {types: 'date'});
+						webshims.polyfill('forms forms-ext');
+						document.write('<input type="datetime-local" name="fin" class="text" placeholder="Fecha y hora de fin" tabindex="7" required/>');
+					}
 				</script>
-				<input type="password" class="text"  id="pass" name="pass" tabindex="7" minlength="8" maxlength="20" placeholder="Contraseña" required><br>
-				<input type="password" class="text"  id="pass" name="pass2" tabindex="8" placeholder="Confirmar Contraseña" required><br>
-				<input type="submit" id="enviar" name="login" tabindex="9" value="Registrarse">
+				<input type="submit" id="enviar" name="submit" tabindex="8" value="Aceptar">
 			</form> 
 		</div>
 	</body>

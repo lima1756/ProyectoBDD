@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="CSS/registroK.css">
 		<script src="JavaScripts/modernizr-custom.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+		<script src="JavaScripts/js-webshim/minified/polyfiller.js"></script>
 		<script src="JavaScripts/validacionRegistro.js"></script>
 	</head>
 	<body>
@@ -28,14 +28,15 @@
 				<input type="text" class="text" id="apellido" name="apellido" tabindex="3" placeholder="Apellido(s)" maxlength="30" required><br>
 				<input type="text" class="text" id="usuario" name="usuario" tabindex="4" placeholder="Usuario" minlength="5" maxlength="20" required><br>
 				<script type="text/javascript">
+				var hoy = new Date().toJSON().slice(0,10);
 					if (Modernizr.inputtypes.date) {
 						document.write('<p class="fecha">Fecha de nacimiento:</p>')
-						document.write('<input type="date" class="text" id="fecha" name="fecha" tabindex="6" max="2016-06-30" min="1900-01-01" required><br>');
+						document.write('<input type="date" class="text" id="fecha" name="fecha" tabindex="6" max="'+hoy+'" min="1905-01-01" required><br>');
 					}
 					else {
 						('forms-ext', {types: 'date'});
 						webshims.polyfill('forms forms-ext');
-						document.write('<input type="date" name="fecha" class="text2" placeholder="Fecha de nacimiento" tabindex="6" required/>');
+						document.write('<input type="date" name="fecha" class="text2" placeholder="Fecha de nacimiento" tabindex="6" auto;" required/>');
 					} 
 				</script>
 				<input type="password" class="text"  id="pass" name="pass" tabindex="7" minlength="8" maxlength="20" placeholder="Contraseña" required><br>

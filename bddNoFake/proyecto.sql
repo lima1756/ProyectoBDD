@@ -19,7 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyecto`
 --
-
+DROP DATABASE IF EXISTS proyecto;
+CREATE DATABASE proyecto;
+USE proyecto;
 DELIMITER $$
 --
 -- Procedimientos
