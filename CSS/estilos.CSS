@@ -10,6 +10,29 @@ header{
 	margin-top: 90px;
 }
 
+.cuerpo table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cuerpo tr{
+    height: 50px;
+    text-align: center;
+}
+
+.cuerpo table, tr, td{
+    border-bottom: 1px solid #ddd;
+}
+
+.cuerpo tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+.cuerpo tr:first-child {
+    background-color: #1A3853;
+    font-size: 20px;
+    color: white;
+}
 
 .search{
 	margin-top:32px;

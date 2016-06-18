@@ -45,7 +45,7 @@ include("Class-Functions/BaseDeDatos.php");
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->agenda();
         ?>
-                <table border="1px">
+                <table>
                     <tr>
                         <td>
                             Nombre
