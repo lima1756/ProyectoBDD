@@ -27,8 +27,7 @@
 				<textarea class="text" name="Descripcion" rows="5" cols="30" tabindex="2" placeholder="Descripción del Concierto"></textarea>
 				<input type="text" class="text" id="artista" name="artista" tabindex="2" placeholder="Artista" maxlength="20" required><br>
 				<input type="text" class="text" id="genero" name="genero" tabindex="3" placeholder="Genero" maxlength="20" required><br>
-				<input type="text" class="text" id="usuario" name="imagen" tabindex="4" placeholder="Nombre de la imagen con extensión." maxlength="20" required><br>
-				<input name="imagen" class="text" type="file" required>
+				<input name="imagen" class="text" type="file" placeholder="Imagen del concierto" required>
 				<script type="text/javascript">
 					var hoy = new Date().toJSON().slice(0,10);
 					if (Modernizr.inputtypes.date) {

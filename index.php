@@ -47,10 +47,9 @@ include("Class-Functions/BaseDeDatos.php");
                     <?php
                     $ObjBD= new BaseDeDatos();
                     $img=$ObjBD->pictures();
-                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'.png" style="width:100%">';
-                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'.png" style="width:100%">';
-                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'.png" style="width:100%">';
-                     ?>
+                    echo '<img class="mySlides" src="Images/'.$img[0]['img'].'" style="width:100%">';
+                    echo '<img class="mySlides" src="Images/'.$img[1]['img'].'" style="width:100%">';
+                    echo '<img class="mySlides" src="Images/'.$img[2]['img'].'" style="width:100%">';                 ?>
                 </div>
             </div>
         <p>PROXIMOS EVENTOS</p>

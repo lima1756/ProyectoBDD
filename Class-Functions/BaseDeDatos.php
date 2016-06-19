@@ -60,4 +60,21 @@ class BaseDeDatos {
         $sql=$this->con->query("CALL conciertos()");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function verificarTitulo($Titulo) {
+        $sql=$this->con->query("CALL revisarTitle('$Titulo')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function Concierto($name, $desc, $art, $gen, $img, $ini, $fin) {
+        $sql=$this->con->prepare("CALL `agregarConcierto`(?,?,?,?,?,?,?)");
+        $sql->bindParam(1, $name);
+        $sql->bindParam(2, $desc);
+        $sql->bindParam(3, $art);
+        $sql->bindParam(4, $gen);
+        $sql->bindParam(5, $img);
+		$sql->bindParam(6, $ini);
+        $sql->bindParam(7, $fin);
+        $sql->execute();
+    }
 }
