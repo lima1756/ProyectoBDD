@@ -42,6 +42,49 @@ include("Class-Functions/BaseDeDatos.php");
 <div class="cuerpo">
     <section>
 
+
+
+   <?php
+$id=$_POST['var'];
+		
+                $ObjBD= new BaseDeDatos();
+               $array= $ObjBD->datosConcierto($id);
+				?>
+				<?php foreach($array as $array){ ?>        
+            <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
+            </br>
+            </br>
+            <?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?>
+            </br>
+            </br>
+            Genero: 
+            <?php echo $array['Genero']; ?>
+            </br>
+            </br>
+            Artista(s):
+            <?php echo $array['Artista']; ?>
+            </br>
+            </br>
+            Fecha de inicio: 
+            <?php echo $array['Fecha_inicio']; ?>
+            </br>
+            </br>
+            Fecha de clausura: 
+            <?php echo $array['Fecha_fin']; ?>
+            </br>
+            </br>                        
+            <?php echo $array['descripcion']; ?>
+            </br>
+            </br>
+			<hr>
+        <?php } ?>	
+				 
+				 
+
+
+
+
+
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
@@ -77,7 +120,12 @@ include("Class-Functions/BaseDeDatos.php");
         </a>
 <?php endif;?>
 </div>
+
+
+
 </div>
+
+	
 
 </body>
 </html>
