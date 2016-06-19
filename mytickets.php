@@ -43,10 +43,16 @@ session_start();
 <div class="cuerpo">
     <section>
         <?php
-        echo "Tus boletos son:";
+        echo "<h1>Tus boletos son:</h1>";
         $ObjBD = new BaseDeDatos();
         $mistickets = $ObjBD->tickets($_SESSION['user']);
-        var_dump($mistickets);
+        echo "<table>";
+        echo "<tr><td>Concierto</td><td>Inicio</td><td>Asiento</td><td>Folio de Pago</td></tr>";
+        foreach($mistickets as $key) {
+            echo ("<tr><td>".$key['concert']."</td><td>".$key['inicio']."</td><td>".$key['fila'].$key['num']."</td><td>".$key['Folio_Compra']."</td></tr>");
+        };
+        echo "</table>";
+        
         ?>
     </section>
 <div id="sidebar">
