@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2016 at 05:01 AM
+-- Generation Time: Jun 19, 2016 at 05:31 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -42,6 +42,13 @@ SELECT agenda.id_Concierto, nombre, descripcion, Artista, Genero, img, Fecha_fin
 FROM concierto
 INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
 WHERE agenda.Finalizado=0$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `datosConcierto` (IN `id` INT)  NO SQL
+SELECT nombre, descripcion, Artista, Genero, img, Fecha_fin, Fecha_inicio
+FROM concierto
+INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
+WHERE agenda.Finalizado=0
+AND concierto.id_Concierto=id$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages` ()  NO SQL
 SELECT concierto.img FROM concierto LEFT JOIN  (
