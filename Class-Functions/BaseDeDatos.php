@@ -136,4 +136,7 @@ class BaseDeDatos {
     public function refuseTransaction(){
         $this->con->query("ROLLBACK;");
     }
+    public function delticket($val){
+        $this->con->query("CALL `delTicket`($val)");
+    }
 }

@@ -47,9 +47,9 @@ session_start();
         $ObjBD = new BaseDeDatos();
         $mistickets = $ObjBD->tickets($_SESSION['user']);
         echo "<table>";
-        echo "<tr><td>Concierto</td><td>Inicio</td><td>Asiento</td><td>Folio de Pago</td></tr>";
+        echo "<tr><td>Concierto</td><td>Inicio</td><td>Asiento</td><td>Folio de Pago</td><td>Eliminar Boleto</td></tr>";
         foreach($mistickets as $key) {
-            echo ("<tr><td>".$key['concert']."</td><td>".$key['inicio']."</td><td>".$key['fila'].$key['num']."</td><td>".$key['Folio_Compra']."</td></tr>");
+            echo ("<tr><td>".$key['concert']."</td><td>".$key['inicio']."</td><td>".$key['fila'].$key['num']."</td><td>".$key['Folio_Compra']."</td><td><form action='Class-Functions/DelTicket.php' method='POST'><input type='hidden' name='id' value='".$key['ID']."'><input type='submit' value='Eliminar boleto'></form></td></tr>");
         };
         echo "</table>";
         
