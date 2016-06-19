@@ -89,7 +89,7 @@ section{
 {
 	margin:180px auto;
 	width:450px;
-	height:325px;
+	height:100%;
 	background:white;
 	border-bottom: 4px solid darkblue;
 }
@@ -104,7 +104,7 @@ section{
 	font-family: Arial;
 }
 
-#inicioF form input[type="text"],input[type="password"]
+#inicioF form input[type="date"],input[type="number"], input[type="text"]
 {
 	width: 230px;
 	padding: 12px 40px;

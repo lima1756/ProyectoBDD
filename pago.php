@@ -19,9 +19,10 @@
 		<div id=inicioF>
 			<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="Class-Functions/LogIn.php">
 				<label for="">Información de Pago</label><br>
-				<input type="text" name="Tarjeta" id="" placeholder="Tarjeta de crédito" ><br><br><br>
-				<input type="text" name="CSV" id="" placeholder="CSV"><br><br><br>
-                <input type="text" name="Vencimiento" id="" placeholder="Vencimiento"><br><br><br>
+				<input type="Text" name="banco" placeholder="Banco"><br><br><br>
+				<input type="number" name="Tarjeta" placeholder="Tarjeta de crédito" min="10000000000000000" max"9999999999999999"><br><br><br>
+				<input type="number" name="CSV" placeholder="CSV" min="000" max="999" minlength="3"><br><br><br>
+                <input type="date" name="Vencimiento" placeholder="Vencimiento"><br><br><br>
 				<input type="submit" value="Comprar">
 			</form>
 		</div>
