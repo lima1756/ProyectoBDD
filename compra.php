@@ -108,12 +108,19 @@ $id=$_POST['var'];
         <div id="btn">
             <p>Ver tus boletos</p>
         </div>
+		  <div id="btn">
+		  <a href="pago.php">
+            <p>pagar o como se iame</p>
+        </div>
     <?php else: ?>
         <a href="nuevoConcierto.php">
         <div id="btn">
             <p>Agregar concierto</p>
         </div>
     </a>
+	
+	
+	
     <?php endif; ?>
         <a href="Class-Functions/LogOut.php">
         <div id="btn">
@@ -121,6 +128,7 @@ $id=$_POST['var'];
         </div>
         </a>
 <?php endif;?>
+    
 </div>
 
 
