@@ -49,7 +49,8 @@ $id=$_POST['var'];
 		
                 $ObjBD= new BaseDeDatos();
                $array= $ObjBD->datosConcierto($id);
-				?>        
+				?>
+				<?php foreach($array as $array){ ?>        
             <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
             </br>
@@ -72,7 +73,8 @@ $id=$_POST['var'];
             <?php echo $array['Fecha_fin']; ?>
             </br>
             </br>                        
-				
+			
+        <?php } ?>	
 				 
 				 
 
