@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php session_start(); ?>
 <html lang="es-US">
 	<head>
 		<title>Agregar Concierto</title>
@@ -20,6 +20,7 @@
 				<a href="index.php"><img src="Images/koncert.png" width="200px;"></a>
 			</div>
 		</header>
+		<?php if(isset($_SESSION['adm']) and $_SESSION['adm']): ?>
 		<div id="formulario">
 			<p>Datos del concierto a agregar:</p>
 			<form name="newConcert" enctype="multipart/form-data" method="POST" onsubmit="return validacion(document.newConcert)" action="Class-Functions/newConcert.php">
@@ -52,5 +53,7 @@
 				<input type="submit" id="enviar" name="submit" tabindex="8" value="Aceptar">
 			</form> 
 		</div>
+		<?php else: header('Location: index.php');?>
+		<?php endif; ?>
 	</body>
 </html>
