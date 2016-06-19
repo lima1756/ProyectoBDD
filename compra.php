@@ -4,7 +4,7 @@
     function generarZonas(){
         $BD = new BaseDeDatos();
         $consulta = $BD->zonas();
-        echo "<select name='zonas' id='zonas' onChange='cargaContenido(this.id)'>";
+        echo "<select name='zonas' id='zonas' onChange='cargaContenido(this.id, document.comprar)'>";
         echo "<option value='-1'>Seleccione zona</option>";
         foreach ($consulta as $key) {
             echo "<option value='".$key['id_Zona']."'>".$key['id_Zona']."</option>";
@@ -113,7 +113,7 @@
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
 	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
 		<p class="descriptivo">Seleccione su zona y asiento disponible</p>
-		<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php"></br>
+		<form name="comprar" method="POST" onsubmit="return validacionLogIn(document.comprar)" action="compra.php"></br>
 				<div id="demo" style="width:600px;">
 				<div id="demoDer">
 					<select disabled="disabled" name="asiento" id="asientos">

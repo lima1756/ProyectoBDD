@@ -84,7 +84,7 @@ class BaseDeDatos {
     }
 
     public function  asientosDisponibles($id, $zona){
-        $sql=$this->con->query("CALL asientosDisponibles('$id','$zona')");
+        $sql=$this->con->query("CALL asientosDisponibles($id,$zona)");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 

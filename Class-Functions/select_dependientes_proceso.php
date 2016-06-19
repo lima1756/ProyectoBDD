@@ -20,26 +20,20 @@ function validaOpcion($opcionSeleccionada)
 	else return false;
 }
 
-$selectDestino=$_GET["select"]; $opcionSeleccionada=$_GET["opcion"];
+$selectDestino=$_GET["select"]; $opcionSeleccionada=$_GET["opcion"]; $concierto=$_GET['concierto'];
 
 if(validaSelect($selectDestino) && validaOpcion($opcionSeleccionada))
 {
 	$tabla=$listadoSelects[$selectDestino];
-	include 'conexion.php';
-	conectar();
-	$consulta=mysql_query("SELECT id, opcion FROM $tabla WHERE relacion='$opcionSeleccionada'") or die(mysql_error());
-	desconectar();
-	
+	include 'BaseDeDatos.php';
+	$ObjBD = new BaseDeDatos();
+    $consulta=$ObjBD->asientosDisponibles($concierto, $opcionSeleccionada);
 	// Comienzo a imprimir el select
 	echo "<select name='".$selectDestino."' id='".$selectDestino."' onChange='cargaContenido(this.id)'>";
-	echo "<option value='0'>Elige</option>";
-	while($registro=mysql_fetch_row($consulta))
-	{
-		// Convierto los caracteres conflictivos a sus entidades HTML correspondientes para su correcta visualizacion
-		$registro[1]=htmlentities($registro[1]);
-		// Imprimo las opciones del select
-		echo "<option value='".$registro[0]."'>".$registro[1]."</option>";
-	}			
-	echo "</select>";
+	echo "<option value='-1'>Elige un asiento</option>";
+	foreach ($consulta as $key) {
+        echo "<option value='".$key['id_Asiento']."'>".$key['Fila'].$key['Numero']."</option>";
+    }
+	echo "</select>"; 
 }
 ?>

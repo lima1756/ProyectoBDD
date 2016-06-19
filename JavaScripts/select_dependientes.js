@@ -40,8 +40,9 @@ function buscarEnArray(array, dato)
 	return null;
 }
 
-function cargaContenido(idSelectOrigen)
+function cargaContenido(idSelectOrigen, form)
 {
+    var concierto = form.elements["var"].value;
 	// Obtengo la posicion que ocupa el select que debe ser cargado en el array declarado mas arriba
 	var posicionSelectDestino=buscarEnArray(listadoSelects, idSelectOrigen)+1;
 	// Obtengo el select que el usuario modifico
@@ -71,7 +72,7 @@ function cargaContenido(idSelectOrigen)
 		var selectDestino=document.getElementById(idSelectDestino);
 		// Creo el nuevo objeto AJAX y envio al servidor el ID del select a cargar y la opcion seleccionada del select origen
 		var ajax=nuevoAjax();
-		ajax.open("GET", "../Class-Functions/select_dependientes_proceso.php?select="+idSelectDestino+"&opcion="+opcionSeleccionada, true);
+		ajax.open("GET", "Class-Functions/select_dependientes_proceso.php?select="+idSelectDestino+"&opcion="+opcionSeleccionada+"&concierto="+concierto, true);
 		ajax.onreadystatechange=function() 
 		{ 
 			if (ajax.readyState==1)
