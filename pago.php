@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 include('Class-Functions/BaseDeDatos.php'); 
+if(isset($_SESSION['adm']) and !$_SESSION['adm']):
 $ObjBD = new BaseDeDatos();
 $val=$ObjBD->precio($_GET['select']);
 ?>
@@ -35,5 +36,7 @@ $val=$ObjBD->precio($_GET['select']);
 			</form>
 			
 		</div>
+		<?php else: header('Location: index.php');?>
+		<?php endif; ?>
 	</body>
 </html>

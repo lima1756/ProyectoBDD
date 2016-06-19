@@ -26,8 +26,7 @@ session_start();
 			<nav class="menu-fixed">
 				<ul>
                      <li><a href="index.php"><img src="Images/koncert.png" width="100px;"></a></li>
-					<li><a href="agenda.php">Agenda</a></li>
-                    <li><a href="eventos.php">Conciertos</a></li>
+					 <li><a href="eventos.php">Conciertos</a></li>
                     <li><a href="instalaciones.php">Instalaciones</a></li>    
                     <li><form class="search">
                         <input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
@@ -42,6 +41,7 @@ session_start();
 
 <div class="cuerpo">
     <section>
+        <?php if(isset($_SESSION['adm']) and !$_SESSION['adm']): ?>
         <?php
         echo "<h1>Tus boletos son:</h1>";
         $ObjBD = new BaseDeDatos();
@@ -52,7 +52,9 @@ session_start();
             echo ("<tr><td>".$key['concert']."</td><td>".$key['inicio']."</td><td>".$key['fila'].$key['num']."</td><td>".$key['Folio_Compra']."</td><td><form action='Class-Functions/DelTicket.php' method='POST'><input type='hidden' name='id' value='".$key['ID']."'><input type='submit' value='Eliminar boleto'></form></td></tr>");
         };
         echo "</table>";
-        
+        else:
+            header('Location: index.php');
+        endif;
         ?>
     </section>
 <div id="sidebar">

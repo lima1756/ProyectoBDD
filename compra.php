@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
     include("Class-Functions/BaseDeDatos.php");
+    if(isset($_SESSION['adm']) and !$_SESSION['adm']):
     function generarZonas(){
         $BD = new BaseDeDatos();
         $consulta = $BD->zonas();
@@ -121,7 +122,8 @@
 				<input type="submit" value="Siguiente">
 			</form>
 </div>
-
+		<?php else: header('Location: index.php');?>
+		<?php endif; ?>
 	
 
 </body>
