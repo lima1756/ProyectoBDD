@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <?php
-include("Class-Functions/BaseDeDatos.php"); 
+    include("Class-Functions/BaseDeDatos.php");
+    function generarZonas(){
+        $BD = new BaseDeDatos();
+        $consulta = $BD->zonas();
+        echo "<select name='zonas' id='zonas' onChange='cargaContenido(this.id)'>";
+        echo "<option value='-1'>Seleccione zona</option>";
+        foreach ($consulta as $key) {
+            echo "<option value='".$key['id_Zona']."'>".$key['id_Zona']."</option>";
+        }
+        echo "</select>";
+    }
+?>
+ 
 ?>
 <html lang="es-US">
 <head>
@@ -61,20 +73,18 @@ include("Class-Functions/BaseDeDatos.php");
         <p class="descriptivo">Fecha de clausura:</p>
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
 	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
-		 
+		<p class="descriptivo">Seleccione su zona y asiento disponible</p>
 		<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php"></br>
-				zona   
-                <select name="zonaa" value="<?php echo $_POST['zonaa']; ?>">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select></br>
-				<input type="hidden" name="var" value="<?php echo $id; ?>">
-				<input type="submit" value="enviar">
+				<div id="demo" style="width:600px;">
+				<div id="demoDer">
+					<select disabled="disabled" name="asiento" id="asientos">
+						<option value="-1">Seleccione asiento</option>
+					</select>
+				</div>
+				<div id="demoIzq"><?php generarZonas(); ?></div>
+			</div>
 	    </form>
-		<?php    var_dump($array2);
-         ?> 
+
 </section>
 <div id="sidebar">
 <?php session_start(); ?>
