@@ -61,34 +61,21 @@ include("Class-Functions/BaseDeDatos.php");
         <p class="descriptivo">Fecha de clausura:</p>
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
 	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
-				 
-		
-<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
-				</br>
+		 
+		<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php"></br>
 				zona   
-                                <select name="zonaa" value="<?php echo $_POST['zonaa']; ?>">
-     <option>1</option>
-     <option>2</option>
-     <option>3</option>
-     <option>4</option>
-   </select>
-
-   
-				</br>
+                <select name="zonaa" value="<?php echo $_POST['zonaa']; ?>">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select></br>
 				<input type="hidden" name="var" value="<?php echo $id; ?>">
 				<input type="submit" value="enviar">
-			</form>
-
-
+	    </form>
 		<?php    var_dump($array2);
          ?> 
-				 
-
-
-
-
-
-    </section>
+</section>
 <div id="sidebar">
 <?php session_start(); ?>
 <?php if(!isset($_SESSION['name'])): ?>
