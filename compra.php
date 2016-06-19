@@ -41,49 +41,28 @@ include("Class-Functions/BaseDeDatos.php");
 
 <div class="cuerpo">
     <section>
-
-
-
-   <?php
- $id=$_POST['var'];
- $zon=$_POST['zonaa'];
-		
-                $ObjBD= new BaseDeDatos();
-               $array= $ObjBD->datosConcierto($id);
-			   
-				?>
-				<?php foreach($array as $array){ ?>        
-<div id="slide-container">
-            <div id="slide">        
-		<?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?> 
-              </div>
-            </div>
-			</br>
-            </br>
-            
-			<texto> <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
-            </br>
-            </br>
-            Genero: 
-            <?php echo $array['Genero']; ?>
-            </br>
-            </br>
-            Artista(s):
-            <?php echo $array['Artista']; ?>
-            </br>
-            </br>
-            Fecha de inicio: 
-            <?php echo $array['Fecha_inicio']; ?>
-            </br>
-            </br>
-            Fecha de clausura: 
-            <?php echo $array['Fecha_fin']; ?>
-            </br>
-            </br>                        
-		</texto>	
-		<?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
+        <?php
+            $zon=$_POST['zonaa'];
+            $id=$_POST['var'];
+		    $ObjBD= new BaseDeDatos();
+            $concierto= $ObjBD->datosConcierto($id);
+        ?>
+        <?php echo '<h1>'.$concierto[0]['nombre'].'</h1>'; ?></br>
+	    <?php echo '<img src="Images/'.$concierto[0]['img'].'" class="concertImg" width="300px" heigh="300px">'; ?>  
+	    </br>
+        <p class="descriptivo">Descripción del concierto:</p>
+        <?php echo $concierto[0]['descripcion']; ?></br></br>
+	    <p class="descriptivo">Genero:</p> 
+        <?php echo $concierto[0]['Genero']; ?></br></br>
+        <p class="descriptivo">Artista(s):</p>
+        <?php echo $concierto[0]['Artista']; ?></br></br>
+        <p class="descriptivo">Fecha de inicio:</p> 
+        <?php echo $concierto[0]['Fecha_inicio']; ?></br></br>
+        <p class="descriptivo">Fecha de clausura:</p>
+        <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
+	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
 				 
-		<formulariooo">
+		
 <form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
 				</br>
 				zona   
@@ -107,8 +86,13 @@ include("Class-Functions/BaseDeDatos.php");
 			</form>
 
 
+<<<<<<< HEAD
 		<?php
         } ?> </formulariooo>
+=======
+		<?php    var_dump($array2);
+         ?> 
+>>>>>>> origin/master
 				 
 
 
