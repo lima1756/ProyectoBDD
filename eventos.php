@@ -40,8 +40,8 @@ include("Class-Functions/BaseDeDatos.php");
 
 
 <div class="cuerpo">
-    <section>
-        <?php
+	<section>
+	    <?php
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->eventos();
         ?>
@@ -79,6 +79,10 @@ include("Class-Functions/BaseDeDatos.php");
 
                     
     </section>
+	
+	
+	
+	
 <div id="sidebar">
 <?php session_start(); ?>
 <?php if(!isset($_SESSION['name'])): ?>
