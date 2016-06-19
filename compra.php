@@ -76,7 +76,7 @@ $id=$_POST['var'];
             <?php echo $array['descripcion']; ?>
             </br>
             </br>
-			<hr>
+			
         <?php } ?>	
 				 
 				 
