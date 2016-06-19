@@ -50,6 +50,9 @@ INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
 WHERE agenda.Finalizado=0
 AND concierto.id_Concierto=id$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `delTicket` (IN `valor` INT)  NO SQL
+DELETE FROM `boleto` WHERE `boleto`.`id_Boleto` = valor$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages` ()  NO SQL
 SELECT concierto.img FROM concierto LEFT JOIN  (
     SELECT agenda.id_Concierto AS id FROM agenda 
@@ -92,12 +95,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `userID` (IN `username` VARCHAR(10))
 SELECT Id_Persona as ID from persona WHERE persona.Usuario=username$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `verBoletos` (IN `usr` VARCHAR(10))  NO SQL
-SELECT concierto.Nombre as concert, agenda.Fecha_inicio as inicio, asiento.Fila as fila, asiento.Numero as num, boleto.Folio_Compra FROM boleto, concierto, agenda, asiento, persona 
+SELECT concierto.Nombre as concert, agenda.Fecha_inicio as inicio, asiento.Fila as fila, asiento.Numero as num, boleto.Folio_Compra, boleto.id_Boleto as ID FROM boleto, concierto, agenda, asiento, persona 
 WHERE boleto.id_Asiento = asiento.id_Asiento 
 AND boleto.id_Concierto = concierto.id_Concierto 
 AND agenda.id_Concierto = concierto.id_Concierto 
 AND boleto.id_Persona = persona.Id_Persona
-AND persona.Usuario=usr$$
+AND persona.Usuario=usr
+AND agenda.Finalizado=0$$
 
 DELIMITER ;
 
@@ -245,12 +249,8 @@ CREATE TABLE `boleto` (
 
 INSERT INTO `boleto` (`id_Boleto`, `Folio_Compra`, `id_Asiento`, `id_Persona`, `id_Concierto`) VALUES
 (16, NULL, 12, 1, 18),
-(18, NULL, 12, 1, 18),
-(24, NULL, 25, 1, 18),
 (25, NULL, 13, 1, 18),
 (26, NULL, 21, 1, 18),
-(35, NULL, 32, 1, 18),
-(37, 6546, 31, 1, 18),
 (38, NULL, 11, 1, 18);
 
 -- --------------------------------------------------------
