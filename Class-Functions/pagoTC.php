@@ -25,7 +25,7 @@ function verificar(){
     $inputBanc = $_POST["banco"];
     $inputTC = $_POST["Tarjeta"];
     $inputCSV = $_POST["CSV"];
-    $inputVen = strotime($_POST["Vencimiento"]);    
+    $inputVen = strtotime($_POST["Vencimiento"]);    
     $minDate = strtotime(date("Y-m-d"));
     if($inputBanc == null || !preg_match("/^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]$/", $inputBanc)){
         echo "Revise que el banco introducido sea correcto";

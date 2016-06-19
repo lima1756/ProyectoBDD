@@ -62,11 +62,17 @@ SELECT concierto.img FROM concierto LEFT JOIN  (
 CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
 SELECT COUNT(persona.Usuario) AS exist FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `nuevoBoleto` (IN `asien` INT, IN `per` INT, IN `con` INT)  NO SQL
+INSERT INTO `boleto` (`id_Asiento`, `id_Persona`, `id_Concierto`) VALUES (asien, per, con)$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerAgenda` ()  NO SQL
 SELECT Fecha_inicio, Fecha_fin, concierto.Nombre
 FROM agenda
 INNER JOIN concierto ON agenda.id_Concierto = concierto.id_Concierto
 WHERE agenda.finalizado =0$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pagoRealizado` (IN `banco` VARCHAR(20), IN `tc` VARCHAR(16), IN `clave` VARCHAR(3), IN `ven` DATETIME)  NO SQL
+INSERT INTO recibo (tarjetaCredito, Banco, CCV, Vencimiento) VALUES (tc, banco, clave, ven)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser` (IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))  INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$
 
@@ -81,6 +87,17 @@ SELECT COUNT(persona.Usuario) as exist from persona where persona.Usuario=userna
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `userData` (IN `usr` VARCHAR(10))  NO SQL
 SELECT persona.Nombre as name, persona.admin as val FROM persona where persona.Usuario=usr$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `userID` (IN `username` VARCHAR(10))  NO SQL
+SELECT Id_Persona as ID from persona WHERE persona.Usuario=username$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `verBoletos` (IN `usr` VARCHAR(10))  NO SQL
+SELECT concierto.Nombre as concert, agenda.Fecha_inicio as inicio, asiento.Fila as fila, asiento.Numero as num, boleto.Folio_Compra FROM boleto, concierto, agenda, asiento, persona 
+WHERE boleto.id_Asiento = asiento.id_Asiento 
+AND boleto.id_Concierto = concierto.id_Concierto 
+AND agenda.id_Concierto = concierto.id_Concierto 
+AND boleto.id_Persona = persona.Id_Persona
+AND persona.Usuario=usr$$
 
 DELIMITER ;
 
@@ -216,8 +233,7 @@ INSERT INTO `asiento` (`id_Zona`, `Fila`, `Numero`, `id_Asiento`) VALUES
 
 CREATE TABLE `boleto` (
   `id_Boleto` int(10) UNSIGNED NOT NULL,
-  `Folio_Compra` int(10) UNSIGNED NOT NULL,
-  `Descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Folio_Compra` int(10) UNSIGNED DEFAULT NULL,
   `id_Asiento` int(10) UNSIGNED NOT NULL,
   `id_Persona` int(10) UNSIGNED NOT NULL,
   `id_Concierto` int(10) UNSIGNED NOT NULL
@@ -227,9 +243,15 @@ CREATE TABLE `boleto` (
 -- Dumping data for table `boleto`
 --
 
-INSERT INTO `boleto` (`id_Boleto`, `Folio_Compra`, `Descripcion`, `id_Asiento`, `id_Persona`, `id_Concierto`) VALUES
-(1, 1, 'descripcion', 1, 2, 18),
-(2, 2, 'asdfsadfa', 21, 3, 18);
+INSERT INTO `boleto` (`id_Boleto`, `Folio_Compra`, `id_Asiento`, `id_Persona`, `id_Concierto`) VALUES
+(16, NULL, 12, 1, 18),
+(18, NULL, 12, 1, 18),
+(24, NULL, 25, 1, 18),
+(25, NULL, 13, 1, 18),
+(26, NULL, 21, 1, 18),
+(35, NULL, 32, 1, 18),
+(37, 6546, 31, 1, 18),
+(38, NULL, 11, 1, 18);
 
 -- --------------------------------------------------------
 
@@ -256,14 +278,6 @@ INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Ge
 ('qwer', 'asdf', 16, 'zxcv', 'poiu', 'hjklñ'),
 ('a....', '....', 17, 'metallica', '.....', 'metallica.png'),
 ('Concierto1', 'Una descripción, mola', 18, 'Artista', 'Genero', 'left hand of god.jpg');
-
---
--- Triggers `concierto`
---
-DELIMITER $$
-CREATE TRIGGER `estadoConcierto` AFTER INSERT ON `concierto` FOR EACH ROW UPDATE agenda Set agenda.Finalizado=1 WHERE agenda.Fecha_fin < NOW()
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -302,12 +316,33 @@ INSERT INTO `persona` (`Edad`, `Pass`, `Usuario`, `Nombre`, `Apellido`, `Id_Pers
 
 CREATE TABLE `recibo` (
   `tarjetaCredito` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `Fecha` date NOT NULL,
+  `Fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Banco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Folio_Compra` int(10) UNSIGNED NOT NULL,
   `CCV` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `Vencimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `recibo`
+--
+
+INSERT INTO `recibo` (`tarjetaCredito`, `Fecha`, `Banco`, `Folio_Compra`, `CCV`, `Vencimiento`) VALUES
+('1234567891023456', '2016-06-19 17:15:56', 'asdf', 6546, '123', '2016-07-19');
+
+--
+-- Triggers `recibo`
+--
+DELIMITER $$
+CREATE TRIGGER `agregarFolio` AFTER INSERT ON `recibo` FOR EACH ROW BEGIN
+SET @b=(SELECT MAX(recibo.Folio_Compra) AS id FROM recibo);
+SET @a=(SELECT MAX(boleto.id_Boleto) AS id FROM boleto);
+UPDATE boleto
+SET boleto.Folio_Compra=@b
+WHERE boleto.id_Boleto=@a;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -400,7 +435,7 @@ ALTER TABLE `asiento`
 -- AUTO_INCREMENT for table `boleto`
 --
 ALTER TABLE `boleto`
-  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `concierto`
 --
@@ -415,7 +450,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT for table `recibo`
 --
 ALTER TABLE `recibo`
-  MODIFY `Folio_Compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Folio_Compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6547;
 --
 -- AUTO_INCREMENT for table `zona`
 --

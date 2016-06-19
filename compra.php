@@ -72,10 +72,6 @@
         <div id="btn">
             <p>Ver tus boletos</p>
         </div>
-		  <div id="btn">
-		  <a href="pago.php">
-            <p>pagar o como se iame</p>
-        </div>
     <?php else: ?>
         <a href="nuevoConcierto.php">
         <div id="btn">
@@ -122,13 +118,8 @@
 				<div id="demoIzq"><?php generarZonas(); ?></div>
 			</div>
 				<input type="hidden" name="var" value="<?php echo $id; ?>">
-				<input type="submit" value="enviar">
+				<input type="submit" value="Siguiente">
 			</form>
-
-
-
-
-
 </div>
 
 	
