@@ -86,8 +86,7 @@ include("Class-Functions/BaseDeDatos.php");
 
 
 <<<<<<< HEAD
-		<?php
-        } ?> </formulariooo>
+		 </formulariooo>
 =======
 		<?php    var_dump($array2);
          ?> 
