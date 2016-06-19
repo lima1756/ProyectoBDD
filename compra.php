@@ -42,6 +42,7 @@ include("Class-Functions/BaseDeDatos.php");
 <div class="cuerpo">
     <section>
         <?php
+            $zon=$_POST['zonaa'];
             $id=$_POST['var'];
 		    $ObjBD= new BaseDeDatos();
             $concierto= $ObjBD->datosConcierto($id);
@@ -59,13 +60,13 @@ include("Class-Functions/BaseDeDatos.php");
         <?php echo $concierto[0]['Fecha_inicio']; ?></br></br>
         <p class="descriptivo">Fecha de clausura:</p>
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
-	    <?php $array2= $ObjBD->asientosDisponibles($id,1);?>	
+	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
 				 
 		<formulariooo">
-<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="Compra.php">
+<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
 				</br>
 				zona   
-				<select name="zonaa">
+                                <select name="zonaa" value="<?php echo $_POST['zonaa']; ?>">
      <option>1</option>
      <option>2</option>
      <option>3</option>
@@ -74,7 +75,7 @@ include("Class-Functions/BaseDeDatos.php");
 
    
 				</br>
-				
+				<input type="hidden" name="var" value="<?php echo $id; ?>">
 				<input type="submit" value="enviar">
 			</form>
 
