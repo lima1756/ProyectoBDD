@@ -110,6 +110,92 @@ CREATE TABLE `asiento` (
   `id_Asiento` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `asiento`
+--
+
+INSERT INTO `asiento` (`id_Zona`, `Fila`, `Numero`, `id_Asiento`) VALUES
+(1, 'A', 1, 1),
+(1, 'A', 2, 2),
+(1, 'A', 3, 3),
+(1, 'A', 4, 4),
+(1, 'A', 5, 5),
+(1, 'A', 6, 6),
+(1, 'A', 7, 7),
+(1, 'A', 8, 8),
+(1, 'A', 9, 9),
+(1, 'A', 10, 10),
+(1, 'B', 1, 11),
+(1, 'B', 2, 12),
+(1, 'B', 3, 13),
+(1, 'B', 4, 14),
+(1, 'B', 5, 15),
+(1, 'B', 6, 16),
+(1, 'B', 7, 17),
+(1, 'B', 8, 18),
+(1, 'B', 9, 19),
+(1, 'B', 10, 20),
+(2, 'C', 1, 21),
+(2, 'C', 2, 22),
+(2, 'C', 3, 23),
+(2, 'C', 4, 24),
+(2, 'C', 5, 25),
+(2, 'C', 6, 26),
+(2, 'C', 7, 27),
+(2, 'C', 8, 28),
+(2, 'C', 9, 29),
+(2, 'C', 10, 30),
+(2, 'D', 1, 31),
+(2, 'D', 2, 32),
+(2, 'D', 3, 33),
+(2, 'D', 4, 34),
+(2, 'D', 5, 35),
+(2, 'D', 6, 36),
+(2, 'D', 7, 37),
+(2, 'D', 8, 38),
+(2, 'D', 9, 39),
+(2, 'D', 10, 40),
+(3, 'E', 1, 41),
+(3, 'E', 2, 42),
+(3, 'E', 3, 43),
+(3, 'E', 4, 44),
+(3, 'E', 5, 45),
+(3, 'E', 6, 46),
+(3, 'E', 7, 47),
+(3, 'E', 8, 48),
+(3, 'E', 9, 49),
+(3, 'E', 10, 50),
+(3, 'F', 1, 51),
+(3, 'F', 2, 52),
+(3, 'F', 3, 53),
+(3, 'F', 4, 54),
+(3, 'F', 5, 55),
+(0, 'F', 6, 56),
+(3, 'F', 7, 57),
+(3, 'F', 8, 58),
+(3, 'F', 9, 59),
+(3, 'F', 10, 60),
+(4, 'G', 1, 61),
+(4, 'G', 2, 62),
+(4, 'G', 3, 63),
+(4, 'G', 4, 64),
+(4, 'G', 5, 65),
+(4, 'G', 6, 66),
+(4, 'G', 7, 67),
+(4, 'G', 8, 68),
+(4, 'G', 9, 69),
+(4, 'G', 10, 70),
+(4, 'H', 1, 71),
+(4, 'H', 2, 72),
+(4, 'H', 3, 73),
+(4, 'H', 4, 74),
+(4, 'H', 5, 75),
+(0, 'H', 6, 76),
+(4, 'H', 7, 77),
+(4, 'H', 8, 78),
+(4, 'H', 9, 79),
+(4, 'H', 10, 80);
+
 -- --------------------------------------------------------
 
 --
@@ -217,6 +303,16 @@ CREATE TABLE `zona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `zona`
+--
+
+INSERT INTO `zona` (`Precio`, `id_Zona`, `Ubicacion`, `Cupo`) VALUES
+(500, 1, 'zona 1', 20),
+(300, 2, 'zona 2', 20),
+(200, 3, 'zona 3', 20),
+(100, 4, 'zona 4', 20);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -279,7 +375,7 @@ ALTER TABLE `agenda`
 -- AUTO_INCREMENT for table `asiento`
 --
 ALTER TABLE `asiento`
-  MODIFY `id_Asiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Asiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT for table `boleto`
 --
@@ -304,7 +400,7 @@ ALTER TABLE `recibo`
 -- AUTO_INCREMENT for table `zona`
 --
 ALTER TABLE `zona`
-  MODIFY `id_Zona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Zona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
