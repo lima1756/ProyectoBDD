@@ -62,7 +62,7 @@ include("Class-Functions/BaseDeDatos.php");
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
 	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
 				 
-		<formulariooo">
+		
 <form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
 				</br>
 				zona   
@@ -81,7 +81,7 @@ include("Class-Functions/BaseDeDatos.php");
 
 
 		<?php    var_dump($array2);
-         ?> </formulariooo>
+         ?> 
 				 
 
 
