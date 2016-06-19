@@ -57,7 +57,8 @@ include("Class-Functions/BaseDeDatos.php");
             </br>
             </br>
             Artista(s):
-            <?php echo $array['Artista']; ?>
+            <?php echo $array['Artista']; 
+            $x=$array['Artista'];?>
             </br>
             </br>
             Fecha de inicio: 
@@ -71,7 +72,10 @@ include("Class-Functions/BaseDeDatos.php");
             <?php echo $array['descripcion']; ?>
             </br>
             </br>
-    <a  href="sdfasdf">Obten tu boleto</a>
+<form action="oki.php" method="post">
+<input type="hidden" name="var" value="<?php echo $array['descripcion']; ?>">
+<input type="submit" value="Enviar"> 
+</form>
     </br>
     </br>
     <hr>
