@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
     include("Class-Functions/BaseDeDatos.php");
+    session_start();
     if(isset($_SESSION['adm']) and !$_SESSION['adm']):
     function generarZonas(){
         $BD = new BaseDeDatos();
@@ -54,7 +55,6 @@
 </header>
 
 <div id="sidebar">
-<?php session_start(); ?>
 <?php if(!isset($_SESSION['name'])): ?>
     <a  href="registroK.php">
             <div id="btn">

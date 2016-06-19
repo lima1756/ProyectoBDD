@@ -127,8 +127,10 @@ INSERT INTO `agenda` (`Fecha_inicio`, `id_Registro`, `Fecha_fin`, `id_Concierto`
 ('2016-06-18 00:00:00', 2, '2016-08-19 00:00:00', 5, 0),
 ('2016-06-17 00:00:00', 3, '2016-06-17 00:00:00', 9, 1),
 ('2016-06-15 00:00:00', 8, '2016-06-15 00:00:00', 16, 1),
-('2016-06-18 00:00:00', 9, '2016-06-19 00:00:00', 17, 0),
-('2016-06-18 22:00:00', 10, '2016-06-19 13:00:00', 18, 0);
+('2016-06-18 00:00:00', 9, '2016-06-19 00:00:00', 17, 1),
+('2016-06-18 22:00:00', 10, '2016-06-19 13:00:00', 18, 1),
+('2016-06-21 21:00:00', 11, '2016-06-22 05:00:00', 19, 0),
+('2016-06-30 17:00:00', 12, '2016-07-01 05:00:00', 20, 0);
 
 -- --------------------------------------------------------
 
@@ -251,7 +253,9 @@ INSERT INTO `boleto` (`id_Boleto`, `Folio_Compra`, `id_Asiento`, `id_Persona`, `
 (16, NULL, 12, 1, 18),
 (25, NULL, 13, 1, 18),
 (26, NULL, 21, 1, 18),
-(38, NULL, 11, 1, 18);
+(38, NULL, 11, 1, 18),
+(39, NULL, 33, 1, 19),
+(40, NULL, 60, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -273,11 +277,19 @@ CREATE TABLE `concierto` (
 --
 
 INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Genero`, `img`) VALUES
-('asdf', 'zxcv', 5, 'qwer', 'yterty', 'rtyrtye'),
 ('123', '456', 9, '789', '147', 'descarga (1).jpg'),
-('qwer', 'asdf', 16, 'zxcv', 'poiu', 'hjklñ'),
 ('a....', '....', 17, 'metallica', '.....', 'metallica.png'),
-('Concierto1', 'Una descripción, mola', 18, 'Artista', 'Genero', 'left hand of god.jpg');
+('Concierto1', 'Una descripción, mola', 18, 'Artista', 'Genero', 'left hand of god.jpg'),
+('Nirvana', 'No se me ocurre que poner aqui', 19, 'Nirvana', 'Rock', 'nirvana.jpg'),
+('Nirvana 2', 'Porque me faltaba el trigger', 20, 'Nirvana', 'Rock', 'nirvana.jpg');
+
+--
+-- Triggers `concierto`
+--
+DELIMITER $$
+CREATE TRIGGER `estadoConcierto` AFTER INSERT ON `concierto` FOR EACH ROW UPDATE agenda Set agenda.Finalizado=1 WHERE agenda.Fecha_fin < NOW()
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -425,7 +437,7 @@ ALTER TABLE `zona`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_Registro` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_Registro` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `asiento`
 --
@@ -435,12 +447,12 @@ ALTER TABLE `asiento`
 -- AUTO_INCREMENT for table `boleto`
 --
 ALTER TABLE `boleto`
-  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `concierto`
 --
 ALTER TABLE `concierto`
-  MODIFY `id_Concierto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_Concierto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `persona`
 --

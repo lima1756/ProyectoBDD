@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php 
+<?php
+session_start(); 
 include('Class-Functions/BaseDeDatos.php'); 
 if(isset($_SESSION['adm']) and !$_SESSION['adm']):
 $ObjBD = new BaseDeDatos();
@@ -11,6 +12,9 @@ $val=$ObjBD->precio($_GET['select']);
 		<title>prueba</title>
 		<link rel="stylesheet" type="text/css" href="CSS/pago.css">
 		<script src="JavaScripts/validacionTC.js"></script>
+		<script src="JavaScripts/modernizr-custom.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="JavaScripts/js-webshim/minified/polyfiller.js"></script>
 	</head>
 	<body>
 		<header>
@@ -30,7 +34,20 @@ $val=$ObjBD->precio($_GET['select']);
 				<input type="Text" name="banco" placeholder="Banco"><br><br><br>
 				<input type="text" name="Tarjeta" placeholder="Tarjeta de crédito" pattern="^[1-9][0-9]{14}[0-9]$"><br><br><br>
 				<input type="number" name="CSV" placeholder="CSV" min="000" max="999" pattern="^[0-9][0-9]{1}[0-9]$"><br><br><br>
-                <input type="date" name="Vencimiento" placeholder="Vencimiento"><br><br><br>
+                <script type="text/javascript">
+				var hoy = new Date().toJSON().slice(0,10);
+					if (Modernizr.inputtypes.date) {
+						document.write('<p class="fecha">Fecha de vencimiento:</p>')
+						document.write('<input type="date" class="text" id="fecha" name="fecha" tabindex="6" max="'+hoy+'" min="1905-01-01" required><br>');
+					}
+					else {
+						('forms-ext', {types: 'date'});
+						webshims.polyfill('forms forms-ext');
+						document.write('<input type="date" name="fecha" class="text2" placeholder="Fecha de vencimiento" tabindex="6" auto;" required/>');
+					} 
+				</script>
+				
+				<br><br><br>
 				<input type="submit" value="Comprar">
 				<a href="Class-Functions/Cancelar.php"><button>Cancelar</button></a>
 			</form>
