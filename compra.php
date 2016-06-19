@@ -87,13 +87,19 @@ include("Class-Functions/BaseDeDatos.php");
 <form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
 				</br>
 				zona   
-                                <select name="zonaa" value="<?php echo $_POST['zonaa']; ?>">
+                                <select name="zonaa">
      <option>1</option>
      <option>2</option>
      <option>3</option>
      <option>4</option>
    </select>
-
+                                				</br>
+                                Fila
+                                <select name="fila">
+                                    <?php foreach($array2 as $array2){ ?>
+                                    <option><?php echo $array2['Fila'];?></option>
+                                    <?php } ?>
+                                </select>
    
 				</br>
 				<input type="hidden" name="var" value="<?php echo $id; ?>">
@@ -101,7 +107,7 @@ include("Class-Functions/BaseDeDatos.php");
 			</form>
 
 
-		<?php    var_dump($array2);
+		<?php
         } ?> </formulariooo>
 				 
 
