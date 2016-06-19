@@ -83,9 +83,9 @@
 				</div>
 				<div id="demoIzq"><?php generarZonas(); ?></div>
 			</div>
-	    </form>
-
-</section>
+				<input type="hidden" name="var" value="<?php echo $id; ?>">
+				<input type="submit" value="enviar">
+			</form>
 <div id="sidebar">
 <?php session_start(); ?>
 <?php if(!isset($_SESSION['name'])): ?>
