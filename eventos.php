@@ -6,7 +6,7 @@ include("Class-Functions/BaseDeDatos.php");
 <head>
     <meta charset="UTF-8">
 	<title>Koncert!</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.CSS">
+	<link rel="stylesheet" type="text/css" href="CSS/eventos.CSS">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     
@@ -44,9 +44,7 @@ include("Class-Functions/BaseDeDatos.php");
         <?php
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->eventos();
-                var_dump($array);
         ?>
-        
         <?php foreach($array as $array){ ?>        
             <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
