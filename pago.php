@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php 
+include('Class-Functions/BaseDeDatos.php'); 
+$ObjBD = new BaseDeDatos();
+$val=$ObjBD->precio($_GET['select']);
+?>
 <html  lang="es-US">
 	<head>
 		<meta charset="UTF-8">
@@ -17,14 +22,18 @@
 		</div>
 		</header>
 		<div id=inicioF>
-			<form name="iniciar" method="POST" onsubmit="return validacionTC(document.iniciar)" action="Class-Functions/LogIn.php">
+			<form name="iniciar" method="POST" onsubmit="return validacionTC(document.iniciar)" action="Class-Functions/pagoTC.php">
 				<label for="">Información de Pago</label><br>
+				<p>Costo Total: $<?php echo $val[0]['Precio'];?></p>
+				</br></br>
 				<input type="Text" name="banco" placeholder="Banco"><br><br><br>
 				<input type="text" name="Tarjeta" placeholder="Tarjeta de crédito" pattern="^[1-9][0-9]{14}[0-9]$"><br><br><br>
 				<input type="number" name="CSV" placeholder="CSV" min="000" max="999" pattern="^[0-9][0-9]{1}[0-9]$"><br><br><br>
                 <input type="date" name="Vencimiento" placeholder="Vencimiento"><br><br><br>
 				<input type="submit" value="Comprar">
+				<a href="Class-Functions/Cancelar.php"><button>Cancelar</button></a>
 			</form>
+			
 		</div>
 	</body>
 </html>
