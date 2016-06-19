@@ -1,8 +1,8 @@
-function validacionCompra(form) {
+function validacionTC(form) {
     var inputBanc = form.elements["banco"].value;
     var inputTC = form.elements["Tarjeta"].value;
     var inputCSV = form.elements["CSV"].value;
-    var inputVen = form.elements["Vencimiento"].value;
+    var inputVen = new Date(form.elements["Vencimiento"].value);
     var minDate = new Date();
     if(inputBanc == null || !/^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]$/.test(inputBanc)){
         alert("Revise que el banco introducido sea correcto");
@@ -16,7 +16,7 @@ function validacionCompra(form) {
         alert("Verifique los datos de la tarjeta");
         return false;
     }
-    if(inputDate == null || inputDate<minDate){
+    if(inputVen == null || inputVen<minDate){
         alert("Verifique los datos de la tarjeta");
         return false;
     }

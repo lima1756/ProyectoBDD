@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>prueba</title>
 		<link rel="stylesheet" type="text/css" href="CSS/pago.css">
-		<script src="JavaScripts/validacionLogIn.js"></script>
+		<script src="JavaScripts/validacionTC.js"></script>
 	</head>
 	<body>
 		<header>
