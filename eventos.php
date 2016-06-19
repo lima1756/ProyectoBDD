@@ -44,6 +44,7 @@ include("Class-Functions/BaseDeDatos.php");
         <?php
                 $ObjBD= new BaseDeDatos();
                 $array=$ObjBD->eventos();
+                var_dump($array);
         ?>
         
         <?php foreach($array as $array){ ?>        

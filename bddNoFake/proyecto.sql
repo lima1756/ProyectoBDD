@@ -35,7 +35,8 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `conciertos` ()  NO SQL
 SELECT nombre, descripcion, Artista, Genero, img, Fecha_fin, Fecha_inicio
 FROM concierto
-INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto$$
+INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
+WHERE agenda.Finalizado=0$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages` ()  NO SQL
 SELECT concierto.img FROM concierto LEFT JOIN  (
