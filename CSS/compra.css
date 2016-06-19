@@ -120,6 +120,7 @@ imag{
 }
 
 #sidebar{
+	margin-top: 90px;
 	width:20%;
 	height:800px; 
 	background-color:   #A0a9a9;
@@ -165,7 +166,7 @@ imag{
 	font-family: Verdana, Geneva, sans-serif;
 }
 
-#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#EAEAEA; text-align:center; }
+#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#2E9AFE; text-align:center; }
 
 #demoDer { float:right; }
 
