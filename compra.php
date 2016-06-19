@@ -6,7 +6,7 @@ include("Class-Functions/BaseDeDatos.php");
 <head>
     <meta charset="UTF-8">
 	<title>Koncert!</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.CSS">
+	<link rel="stylesheet" type="text/css" href="CSS/compra.CSS">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     
@@ -51,10 +51,15 @@ $id=$_POST['var'];
                $array= $ObjBD->datosConcierto($id);
 				?>
 				<?php foreach($array as $array){ ?>        
-            <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
+<div id="slide-container">
+            <div id="slide">        
+		<?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?> 
+              </div>
+            </div>
+			</br>
             </br>
-            </br>
-            <?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?>
+            
+			<?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
             </br>
             Genero: 
