@@ -93,7 +93,6 @@
 <div class="cuerpo">
     <section>
         <?php
-            $zon=$_POST['zonaa'];
             $id=$_POST['var'];
 		    $ObjBD= new BaseDeDatos();
             $concierto= $ObjBD->datosConcierto($id);

@@ -73,7 +73,6 @@ include("Class-Functions/BaseDeDatos.php");
             </br>
 <form action="compra.php" method="post">
 <input type="hidden" name="var" value="<?php echo $array['id_Concierto']; ?>">
-<input type="hidden" name="zonaa" value="1">
 <input type="submit" value="Comprar boleto"> 
 </form>
     </br>
