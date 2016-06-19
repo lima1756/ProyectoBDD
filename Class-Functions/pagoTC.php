@@ -3,22 +3,22 @@
 	if(isset($_POST['Tarjeta'])){
 		$ObjBD= new BaseDeDatos();
         $ObjBD->startTransaction();
-		if(verificar()){
-			try{
-					$ObjBD->newTC($_POST['banco'], $_POST["Tarjeta"], $_POST["CSV"], $_POST["Vencimiento"]);
-                    $ObjBD->acceptTransaction();
-                    header('Location: ../index.php');
-				}   
-			catch(PDOException $e)
-			{
-			echo "Error: " . $e->getMessage();
-            $ObjBD->refuseTransaction();
-			}
+		try{
+			$ObjBD->newTC($_POST['banco'], $_POST["Tarjeta"], $_POST["CSV"], $_POST["Vencimiento"]);
+            if(verificar()){
+                $ObjBD->acceptTransaction();
+             }
+             else{
+                 $ObjBD->refuseTransaction();
+                 }
+            header('Location: ../index.php');
+			}   
+		catch(PDOException $e)
+		{
+		echo "Error: " . $e->getMessage();
+        $ObjBD->refuseTransaction();
 		}
-        else{
-            $ObjBD->refuseTransaction();
-        }
-	}
+}
 
 
 function verificar(){

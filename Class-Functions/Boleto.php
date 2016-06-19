@@ -4,23 +4,23 @@
     $ObjBD= new BaseDeDatos();
 	if(isset($_POST['var'])){
 		$ObjBD->startTransaction();
-		if(verificar()){
-			try{
-					$IDUSUARIO=$ObjBD->usrID($_SESSION['user']);      
-					$ObjBD->nuevoBoleto($_POST['asientos'], $IDUSUARIO[0]['ID'], $_POST['var']);
-                    $ObjBD->acceptTransaction();
-                    header('Location: ../pago.php?select=+'.$_POST["zonas"].'');
-                }   
-			catch(PDOException $e)
-			{
-			echo "Error: " . $e->getMessage();
-            $ObjBD->refuseTransaction();
-			}
-		}
-        else{
-            $ObjBD->refuseTransaction();
+		try{
+			$IDUSUARIO=$ObjBD->usrID($_SESSION['user']);      
+			$ObjBD->nuevoBoleto($_POST['asientos'], $IDUSUARIO[0]['ID'], $_POST['var']);
+            if(verificar()){
+                $ObjBD->acceptTransaction();
+            }
+            else{
+                $ObjBD->refuseTransaction();
+            }
+            header('Location: ../pago.php?select=+'.$_POST["zonas"].'');
+        }   
+	    catch(PDOException $e)
+		{
+		echo "Error: " . $e->getMessage();
+        $ObjBD->refuseTransaction();
         }
-	}
+    }
 
 
 function verificar(){
