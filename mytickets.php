@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-include("Class-Functions/BaseDeDatos.php"); 
+include("Class-Functions/BaseDeDatos.php");
+session_start(); 
 ?>
 <html lang="es-US">
 <head>
@@ -43,10 +44,12 @@ include("Class-Functions/BaseDeDatos.php");
     <section>
         <?php
         echo "Tus boletos son:";
+        $ObjBD = new BaseDeDatos();
+        $mistickets = $ObjBD->tickets($_SESSION['user']);
+        var_dump($mistickets);
         ?>
     </section>
 <div id="sidebar">
-<?php session_start(); ?>
 <?php if(!isset($_SESSION['name'])): ?>
     <a  href="registroK.php">
             <div id="btn">

@@ -121,6 +121,12 @@ class BaseDeDatos {
         $sql=$this->con->query("SELECT Precio FROM zona WHERE id_Zona=$zona");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function tickets($usr){
+        $sql=$this->con->query("CALL `verBoletos`('$usr')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function startTransaction(){
         $this->con->query("BEGIN;");
     }
