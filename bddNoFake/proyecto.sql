@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-06-2016 a las 20:40:04
+-- Tiempo de generación: 19-06-2016 a las 02:17:24
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -19,26 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyecto`
 --
-DROP DATABASE IF EXISTS proyecto;
-CREATE DATABASE proyecto;
-USE proyecto;
+
 DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `agregarConcierto` (IN `name` VARCHAR(20), IN `descr` TEXT, IN `artista` VARCHAR(20), IN `genero` VARCHAR(20), IN `image` VARCHAR(20), IN `inicio` DATETIME, IN `fin` DATETIME)  SQL SECURITY INVOKER
+CREATE DEFINER=`root`@`localhost` PROCEDURE `agregarConcierto`(IN `name` VARCHAR(20), IN `descr` TEXT, IN `artista` VARCHAR(20), IN `genero` VARCHAR(20), IN `image` VARCHAR(20), IN `inicio` DATETIME, IN `fin` DATETIME)
+    SQL SECURITY INVOKER
 BEGIN
 INSERT INTO concierto(Nombre, Descripcion, Artista, Genero, img) values (name, descr, artista, genero, image); 
 INSERT INTO agenda(Fecha_inicio, Fecha_fin, id_Concierto) VALUES (inicio, fin, last_insert_id());
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `conciertos` ()  NO SQL
-SELECT nombre, descripcion, Artista, Genero, img, Fecha_fin, Fecha_inicio
+CREATE DEFINER=`root`@`localhost` PROCEDURE `concierto`()
+    NO SQL
+SELECT agenda.id_Concierto, nombre, descripcion, Artista, Genero, img, Fecha_fin, Fecha_inicio
 FROM concierto
 INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
 WHERE agenda.Finalizado=0$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages` ()  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getImages`()
+    NO SQL
 SELECT concierto.img FROM concierto LEFT JOIN  (
     SELECT agenda.id_Concierto AS id FROM agenda 
     WHERE agenda.Finalizado=0
@@ -47,27 +48,34 @@ SELECT concierto.img FROM concierto LEFT JOIN  (
     ON concierto.id_Concierto = subtable.id
     WHERE concierto.id_Concierto = subtable.id$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `login` (IN `username` VARCHAR(10), IN `password` VARCHAR(20))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `login`(IN `username` VARCHAR(10), IN `password` VARCHAR(20))
+    NO SQL
 SELECT COUNT(persona.Usuario) AS exist FROM persona WHERE persona.Usuario=username AND persona.Pass=password$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerAgenda` ()  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerAgenda`()
+    NO SQL
 SELECT Fecha_inicio, Fecha_fin, concierto.Nombre
 FROM agenda
 INNER JOIN concierto ON agenda.id_Concierto = concierto.id_Concierto
 WHERE agenda.finalizado =0$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser` (IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))  INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registroUser`(IN `nombre` VARCHAR(30), IN `apellido` VARCHAR(30), IN `pass` VARCHAR(20), IN `usuario` VARCHAR(10), IN `edad` DATE, IN `correo` VARCHAR(30))
+INSERT INTO persona(Nombre, Apellido, Pass, Usuario, Edad, email) values (nombre, apellido, pass, usuario, edad, correo)$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarCorreo` (IN `correo` VARCHAR(30))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarCorreo`(IN `correo` VARCHAR(30))
+    NO SQL
 SELECT COUNT(persona.email) as exist from persona where email=correo$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarTitle` (IN `title` VARCHAR(20))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarTitle`(IN `title` VARCHAR(20))
+    NO SQL
 SELECT COUNT(concierto.Nombre) as exist from concierto where concierto.Nombre=title$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarUsuario` (IN `username` VARCHAR(10))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `revisarUsuario`(IN `username` VARCHAR(10))
+    NO SQL
 SELECT COUNT(persona.Usuario) as exist from persona where persona.Usuario=username$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `userData` (IN `usr` VARCHAR(10))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `userData`(IN `usr` VARCHAR(10))
+    NO SQL
 SELECT persona.Nombre as name, persona.admin as val FROM persona where persona.Usuario=usr$$
 
 DELIMITER ;
@@ -75,19 +83,20 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agenda`
+-- Estructura de tabla para la tabla `agenda`
 --
 
-CREATE TABLE `agenda` (
+CREATE TABLE IF NOT EXISTS `agenda` (
   `Fecha_inicio` datetime NOT NULL,
-  `id_Registro` int(10) UNSIGNED NOT NULL,
+  `id_Registro` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Fecha_fin` datetime NOT NULL,
-  `id_Concierto` int(10) UNSIGNED NOT NULL,
-  `Finalizado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_Concierto` int(10) unsigned NOT NULL,
+  `Finalizado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_Registro`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `agenda`
+-- Volcado de datos para la tabla `agenda`
 --
 
 INSERT INTO `agenda` (`Fecha_inicio`, `id_Registro`, `Fecha_fin`, `id_Concierto`, `Finalizado`) VALUES
@@ -100,18 +109,19 @@ INSERT INTO `agenda` (`Fecha_inicio`, `id_Registro`, `Fecha_fin`, `id_Concierto`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `asiento`
+-- Estructura de tabla para la tabla `asiento`
 --
 
-CREATE TABLE `asiento` (
-  `id_Zona` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `asiento` (
+  `id_Zona` int(10) unsigned NOT NULL,
   `Fila` char(1) COLLATE utf8_unicode_ci NOT NULL,
-  `Numero` int(10) UNSIGNED NOT NULL,
-  `id_Asiento` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Numero` int(10) unsigned NOT NULL,
+  `id_Asiento` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_Asiento`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=81 ;
 
 --
--- Dumping data for table `asiento`
+-- Volcado de datos para la tabla `asiento`
 --
 
 INSERT INTO `asiento` (`id_Zona`, `Fila`, `Numero`, `id_Asiento`) VALUES
@@ -199,35 +209,39 @@ INSERT INTO `asiento` (`id_Zona`, `Fila`, `Numero`, `id_Asiento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `boleto`
+-- Estructura de tabla para la tabla `boleto`
 --
 
-CREATE TABLE `boleto` (
-  `id_Boleto` int(10) UNSIGNED NOT NULL,
-  `Folio_Compra` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `boleto` (
+  `id_Boleto` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Folio_Compra` int(10) unsigned NOT NULL,
   `Descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `id_Asiento` int(10) UNSIGNED NOT NULL,
-  `id_Persona` int(10) UNSIGNED NOT NULL,
-  `id_Concierto` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id_Asiento` int(10) unsigned NOT NULL,
+  `id_Persona` int(10) unsigned NOT NULL,
+  `id_Concierto` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_Boleto`),
+  UNIQUE KEY `Folio_Compra` (`Folio_Compra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `concierto`
+-- Estructura de tabla para la tabla `concierto`
 --
 
-CREATE TABLE `concierto` (
+CREATE TABLE IF NOT EXISTS `concierto` (
   `Nombre` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Descripcion` text COLLATE utf8_unicode_ci NOT NULL,
-  `id_Concierto` int(10) UNSIGNED NOT NULL,
+  `id_Concierto` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Artista` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Genero` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `img` varchar(20) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `img` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_Concierto`),
+  UNIQUE KEY `Nombre` (`Nombre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `concierto`
+-- Volcado de datos para la tabla `concierto`
 --
 
 INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Genero`, `img`) VALUES
@@ -238,32 +252,37 @@ INSERT INTO `concierto` (`Nombre`, `Descripcion`, `id_Concierto`, `Artista`, `Ge
 ('Concierto1', 'Una descripción, mola', 18, 'Artista', 'Genero', 'left hand of god.jpg');
 
 --
--- Triggers `concierto`
+-- Disparadores `concierto`
 --
-DELIMITER $$
-CREATE TRIGGER `estadoConcierto` AFTER INSERT ON `concierto` FOR EACH ROW UPDATE agenda Set agenda.Finalizado=1 WHERE agenda.Fecha_fin < NOW()
-$$
+DROP TRIGGER IF EXISTS `estadoConcierto`;
+DELIMITER //
+CREATE TRIGGER `estadoConcierto` AFTER INSERT ON `concierto`
+ FOR EACH ROW UPDATE agenda Set agenda.Finalizado=1 WHERE agenda.Fecha_fin < NOW()
+//
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `persona`
+-- Estructura de tabla para la tabla `persona`
 --
 
-CREATE TABLE `persona` (
+CREATE TABLE IF NOT EXISTS `persona` (
   `Edad` date NOT NULL,
   `Pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `Usuario` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `Nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `Apellido` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `Id_Persona` int(10) UNSIGNED NOT NULL,
+  `Id_Persona` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id_Persona`),
+  UNIQUE KEY `Usuario` (`Usuario`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `persona`
+-- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`Edad`, `Pass`, `Usuario`, `Nombre`, `Apellido`, `Id_Persona`, `email`, `admin`) VALUES
@@ -277,33 +296,35 @@ INSERT INTO `persona` (`Edad`, `Pass`, `Usuario`, `Nombre`, `Apellido`, `Id_Pers
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recibo`
+-- Estructura de tabla para la tabla `recibo`
 --
 
-CREATE TABLE `recibo` (
+CREATE TABLE IF NOT EXISTS `recibo` (
   `tarjetaCredito` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `Fecha` date NOT NULL,
   `Banco` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Folio_Compra` int(10) UNSIGNED NOT NULL,
+  `Folio_Compra` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CCV` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
-  `Vencimiento` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Vencimiento` date NOT NULL,
+  PRIMARY KEY (`Folio_Compra`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `zona`
+-- Estructura de tabla para la tabla `zona`
 --
 
-CREATE TABLE `zona` (
-  `Precio` int(10) UNSIGNED NOT NULL,
-  `id_Zona` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `zona` (
+  `Precio` int(10) unsigned NOT NULL,
+  `id_Zona` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Ubicacion` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Cupo` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `Cupo` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_Zona`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `zona`
+-- Volcado de datos para la tabla `zona`
 --
 
 INSERT INTO `zona` (`Precio`, `id_Zona`, `Ubicacion`, `Cupo`) VALUES
@@ -312,95 +333,6 @@ INSERT INTO `zona` (`Precio`, `id_Zona`, `Ubicacion`, `Cupo`) VALUES
 (200, 3, 'zona 3', 20),
 (100, 4, 'zona 4', 20);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `agenda`
---
-ALTER TABLE `agenda`
-  ADD PRIMARY KEY (`id_Registro`);
-
---
--- Indexes for table `asiento`
---
-ALTER TABLE `asiento`
-  ADD PRIMARY KEY (`id_Asiento`);
-
---
--- Indexes for table `boleto`
---
-ALTER TABLE `boleto`
-  ADD PRIMARY KEY (`id_Boleto`),
-  ADD UNIQUE KEY `Folio_Compra` (`Folio_Compra`);
-
---
--- Indexes for table `concierto`
---
-ALTER TABLE `concierto`
-  ADD PRIMARY KEY (`id_Concierto`),
-  ADD UNIQUE KEY `Nombre` (`Nombre`);
-
---
--- Indexes for table `persona`
---
-ALTER TABLE `persona`
-  ADD PRIMARY KEY (`Id_Persona`),
-  ADD UNIQUE KEY `Usuario` (`Usuario`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Indexes for table `recibo`
---
-ALTER TABLE `recibo`
-  ADD PRIMARY KEY (`Folio_Compra`);
-
---
--- Indexes for table `zona`
---
-ALTER TABLE `zona`
-  ADD PRIMARY KEY (`id_Zona`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `agenda`
---
-ALTER TABLE `agenda`
-  MODIFY `id_Registro` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `asiento`
---
-ALTER TABLE `asiento`
-  MODIFY `id_Asiento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
---
--- AUTO_INCREMENT for table `boleto`
---
-ALTER TABLE `boleto`
-  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `concierto`
---
-ALTER TABLE `concierto`
-  MODIFY `id_Concierto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `persona`
---
-ALTER TABLE `persona`
-  MODIFY `Id_Persona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `recibo`
---
-ALTER TABLE `recibo`
-  MODIFY `Folio_Compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `zona`
---
-ALTER TABLE `zona`
-  MODIFY `id_Zona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
