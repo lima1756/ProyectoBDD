@@ -45,7 +45,7 @@ include("Class-Functions/BaseDeDatos.php");
 
 
    <?php
-$id=$_POST['var'];
+ $id=$_POST['var'];
 		
                 $ObjBD= new BaseDeDatos();
                $array= $ObjBD->datosConcierto($id);
@@ -83,7 +83,7 @@ $id=$_POST['var'];
 		<?php $array2= $ObjBD->asientosDisponibles($id,1);?>	
 				 
 		<formulariooo">
-<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="Compra.php">
+<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="compra.php">
 				</br>
 				zona   
 				<select name="zonaa">
@@ -95,7 +95,7 @@ $id=$_POST['var'];
 
    
 				</br>
-				
+				<input type="hidden" name="var" value="<?php echo $id; ?>">
 				<input type="submit" value="enviar">
 			</form>
 
