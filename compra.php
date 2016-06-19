@@ -49,6 +49,7 @@ $id=$_POST['var'];
 		
                 $ObjBD= new BaseDeDatos();
                $array= $ObjBD->datosConcierto($id);
+			   
 				?>
 				<?php foreach($array as $array){ ?>        
 <div id="slide-container">
@@ -59,7 +60,7 @@ $id=$_POST['var'];
 			</br>
             </br>
             
-			<?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
+			<texto> <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
             </br>
             Genero: 
@@ -78,9 +79,29 @@ $id=$_POST['var'];
             <?php echo $array['Fecha_fin']; ?>
             </br>
             </br>                        
-			
-        <?php } ?>	
+		</texto>	
+		<?php $array2= $ObjBD->asientosDisponibles($id,1);?>	
 				 
+		<formulariooo">
+<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="Compra.php">
+				</br>
+				zona   
+				<select name="zonaa">
+     <option>1</option>
+     <option>2</option>
+     <option>3</option>
+     <option>4</option>
+   </select>
+
+   
+				</br>
+				
+				<input type="submit" value="enviar">
+			</form>
+
+
+		<?php    var_dump($array2);
+        } ?> </formulariooo>
 				 
 
 
