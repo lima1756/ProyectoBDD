@@ -92,4 +92,27 @@ class BaseDeDatos {
         $sql=$this->con->query("SELECT id_Zona FROM `zona`");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function nuevoBoleto($as,$per,$conc){
+        $sql=$this->con->prepare("CALL `nuevoBoleto`(?,?,?)");
+        $sql->bindParam(1, $as);
+        $sql->bindParam(2, $per);
+        $sql->bindParam(3, $conc);
+        $sql->execute();
+        
+    }
+
+    public function usrID($username){
+        $sql=$this->con->query("CALL `userID`('$username')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function startTransaction(){
+        $this->con->begintransaction();
+    }
+    public function acceptTransaction(){
+        $this->con->commit();
+    }
+    public function refuseTransaction(){
+        $this->con->rollback();
+    }
 }

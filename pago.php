@@ -17,11 +17,11 @@
 		</div>
 		</header>
 		<div id=inicioF>
-			<form name="iniciar" method="POST" onsubmit="return validacionLogIn(document.iniciar)" action="Class-Functions/LogIn.php">
+			<form name="iniciar" method="POST" onsubmit="return validacionTC(document.iniciar)" action="Class-Functions/LogIn.php">
 				<label for="">Información de Pago</label><br>
 				<input type="Text" name="banco" placeholder="Banco"><br><br><br>
-				<input type="number" name="Tarjeta" placeholder="Tarjeta de crédito" min="10000000000000000" max"9999999999999999"><br><br><br>
-				<input type="number" name="CSV" placeholder="CSV" min="000" max="999" minlength="3"><br><br><br>
+				<input type="text" name="Tarjeta" placeholder="Tarjeta de crédito" pattern="^[1-9][0-9]{14}[0-9]$"><br><br><br>
+				<input type="number" name="CSV" placeholder="CSV" min="000" max="999" pattern="^[0-9][0-9]{1}[0-9]$"><br><br><br>
                 <input type="date" name="Vencimiento" placeholder="Vencimiento"><br><br><br>
 				<input type="submit" value="Comprar">
 			</form>

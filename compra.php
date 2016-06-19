@@ -22,6 +22,7 @@
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     <script src ="JavaScripts/select_dependientes.js"></script>
+    <script src ="JavaScripts/validacionCompra.js"></script>
     
 </head>
 <body>
@@ -110,9 +111,8 @@
         <?php echo $concierto[0]['Fecha_inicio']; ?></br></br>
         <p class="descriptivo">Fecha de clausura:</p>
         <?php echo $concierto[0]['Fecha_fin']; ?></br></br>                        
-	    <?php $array2= $ObjBD->asientosDisponibles($id,$zon);?>	
-		<p class="descriptivo">Seleccione su zona y asiento disponible</p>
-		<form name="comprar" method="POST" onsubmit="return validacionLogIn(document.comprar)" action="compra.php"></br>
+	    <p class="descriptivo">Seleccione su zona y asiento disponible</p>
+		<form name="comprar" method="POST" onsubmit="return validacionCompra(document.comprar)" action="Class-Functions/Boleto.php"></br>
 				<div id="demo" style="width:600px;">
 				<div id="demoDer">
 					<select disabled="disabled" name="asiento" id="asientos">
