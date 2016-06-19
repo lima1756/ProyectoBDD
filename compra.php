@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="CSS/compra.CSS">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
+    <script src ="JavaScripts/select_dependientes.js"></script>
     
 </head>
 <body>
