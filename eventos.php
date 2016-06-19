@@ -50,7 +50,7 @@ include("Class-Functions/BaseDeDatos.php");
             <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
             </br>
-            <?php echo '<img src="Images/'.$array['img'].'.png" width="300px" heigh="300px">'; ?>
+            <?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?>
             </br>
             </br>
             Genero: 
