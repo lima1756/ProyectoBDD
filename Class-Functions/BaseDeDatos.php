@@ -77,4 +77,14 @@ class BaseDeDatos {
         $sql->bindParam(7, $fin);
         $sql->execute();
     }
+
+    public function datosConcierto($id){
+        $sql=$this->con->query("CALL datosConcierto('$id')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function  asientosDisponibles($id, $zona){
+        $sql=$this->con->query("CALL asientosDisponibles('$id','$zona')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
