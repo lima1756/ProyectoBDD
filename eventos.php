@@ -71,7 +71,7 @@ include("Class-Functions/BaseDeDatos.php");
             <?php echo $array['descripcion']; ?>
             </br>
             </br>
-<form action="oki.php" method="post">
+<form action="compra.php" method="post">
 <input type="hidden" name="var" value="<?php echo $array['id_Concierto']; ?>">
 <input type="submit" value="Comprar boleto"> 
 </form>
