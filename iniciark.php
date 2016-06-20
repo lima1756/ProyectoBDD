@@ -11,7 +11,6 @@
 		<div id="buscador">
 			<form>
 				<input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
-				<input type="text" name="search" placeholder="Buscar..." id="search">
 			</form>
 			<a href="index.php"><img src="images/koncert.png" width="200px;"></a>
 		</div>
