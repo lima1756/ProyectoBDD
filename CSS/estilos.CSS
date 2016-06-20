@@ -138,12 +138,17 @@ section{
 }
 #slide img{
 
-border-bottom: 1px solid lightgray;
-	width: 80%;
-	height: 200px;
-	margin:0px auto;
-	margin-right: -50;
-padding-left: 4cm;
+/* border-bottom: 1px solid lightgray; */
+
+width: 80%;
+
+height: 200px;
+
+margin:0px auto;
+
+margin-right: -50;
+
+padding-left: 1.5cm; 
 }
 #sidebar{
 	width:20%;
