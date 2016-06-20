@@ -257,12 +257,7 @@ CREATE TABLE `boleto` (
 --
 
 INSERT INTO `boleto` (`id_Boleto`, `Folio_Compra`, `id_Asiento`, `id_Persona`, `id_Concierto`) VALUES
-(16, NULL, 12, 1, 18),
-(25, NULL, 13, 1, 18),
-(26, NULL, 21, 1, 18),
-(38, NULL, 11, 1, 18),
-(39, NULL, 33, 1, 19),
-(40, NULL, 60, 1, 19);
+(45, 6547, 14, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -347,7 +342,7 @@ CREATE TABLE `recibo` (
 --
 
 INSERT INTO `recibo` (`tarjetaCredito`, `Fecha`, `Banco`, `Folio_Compra`, `CCV`, `Vencimiento`) VALUES
-('1234567891023456', '2016-06-19 17:15:56', 'asdf', 6546, '123', '2016-07-19');
+('1234567891023456', '2016-06-19 19:50:51', 'asdf', 6547, '123', '2016-06-22');
 
 --
 -- Triggers `recibo`
@@ -454,7 +449,7 @@ ALTER TABLE `asiento`
 -- AUTO_INCREMENT for table `boleto`
 --
 ALTER TABLE `boleto`
-  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_Boleto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `concierto`
 --
@@ -469,7 +464,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT for table `recibo`
 --
 ALTER TABLE `recibo`
-  MODIFY `Folio_Compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6547;
+  MODIFY `Folio_Compra` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6548;
 --
 -- AUTO_INCREMENT for table `zona`
 --
