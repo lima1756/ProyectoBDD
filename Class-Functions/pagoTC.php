@@ -7,11 +7,12 @@
 			$ObjBD->newTC($_POST['banco'], $_POST["Tarjeta"], $_POST["CSV"], $_POST["Vencimiento"]);
             if(verificar()){
                 $ObjBD->acceptTransaction();
+                header('Location: /proyectoBDD/myTickets.php');
              }
              else{
                  $ObjBD->refuseTransaction();
                  }
-            header('Location: ../index.php');
+            
 			}   
 		catch(PDOException $e)
 		{
@@ -25,6 +26,7 @@ function verificar(){
     $inputBanc = $_POST["banco"];
     $inputTC = $_POST["Tarjeta"];
     $inputCSV = $_POST["CSV"];
+    var_dump($_POST);
     $inputVen = strtotime($_POST["Vencimiento"]);    
     $minDate = strtotime(date("Y-m-d"));
     if($inputBanc == null || !preg_match("/^[a-zA-Z]*[a-zA-Z]+[a-zA-Z]$/", $inputBanc)){
