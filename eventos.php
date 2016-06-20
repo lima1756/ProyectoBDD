@@ -7,7 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
 	<title>Koncert!</title>
-	<link rel="stylesheet" type="text/css" href="CSS/eventos.CSS">
+	
+	<link rel="stylesheet" type="text/css" href="CSS/eventosn.css">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     
@@ -49,7 +50,8 @@ session_start();
             <?php echo '<h1>'.$array['nombre'].'</h1>'; ?>
             </br>
             </br>
-            <?php echo '<img src="Images/'.$array['img'].'" width="300px" heigh="300px">'; ?>
+            <?php echo '<img src="Images/'.$array['img'].'"  class="concertImg"   width="300px" heigh="300px" >'; ?>
+		
             </br>
             </br>
             Genero: 

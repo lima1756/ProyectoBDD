@@ -1,0 +1,190 @@
+*{ padding:0px; margin:0px;}
+
+html{ background-color: #a0a9a9;}
+header{
+	
+	background: white;
+}
+
+.cuerpo {
+	margin-top: 90px;
+}
+
+.cuerpo table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cuerpo tr{
+    height: 50px;
+    text-align: center;
+}
+
+.cuerpo table, tr, td{
+    border-bottom: 1px solid #ddd;
+}
+
+.cuerpo tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+
+.cuerpo tr:first-child {
+    background-color: #1A3853;
+    font-size: 20px;
+    color: white;
+}
+
+.cuerpo #titulo{
+font-size: 20px;
+}
+
+.search{
+	margin-top:32px;
+}
+.contenedor {
+	width: 95%;
+	max-width:1000px;
+	margin:auto;
+}
+ 
+.contenedor p {
+	margin-bottom:40px;
+}
+ 
+header nav {
+	background:#3498db;
+	margin-bottom:20px;
+}
+ 
+header nav ul {
+	list-style: none;
+	overflow: hidden;
+}
+ 
+header nav ul li {
+	float: left;
+}
+ 
+header nav ul li a {
+	display: block;
+	padding:30px;
+	color:#fff;
+	text-decoration: none;
+}
+ 
+header nav ul li a:hover {
+	background:#2980b9;
+}
+ 
+ 
+.menu-fixed {
+	position:fixed;
+	z-index:1000;
+	top:0;
+	/*max-width:1000px;*/
+	left:0;
+	width:100%;
+	box-shadow:0px 4px 3px rgba(0,0,0,.5);
+}
+
+
+#boton{
+border:1px solid white;
+background-color:#68b6df;
+color: black;
+
+}
+
+#boton:hover{
+
+	background-color: #99AACC
+
+}
+
+section{
+
+	width: 80%;
+	height:auto;
+	background-color: white;
+	box-shadow: 0px 0px 5px black;
+	float: left;
+}
+
+
+texto{
+ float: left;
+    width: 300px;
+    margin-right: 10px;
+
+}
+
+formulariooo{
+
+ float: left;
+
+
+
+}
+
+imag{
+
+	width: 80%;
+	height:200px;
+	background-color: white;
+	box-shadow: 0px 0px 5px black;
+	float: left;
+}
+
+
+#sidebar{
+	margin-top: 10px;
+	width:19%;
+	height:800px; 
+	background-color:   #A0a9a9;
+	float: right;
+
+}
+
+
+#sidebar a{
+	text-decoration: none;
+	color: white;}
+
+#btn{
+	background: #68b6df;
+	padding: 10px;
+	width: 70px;
+	margin:50px auto;
+	border-radius: 5px;
+	transition: border-radius 0.7s;
+}
+
+#btn p{
+	text-decoration: none;
+	color: white;}
+
+#btn:hover{	
+	background-color: #2E9AFE;
+	border-radius: 100px;
+}
+
+.concertImg{
+	position:relative;
+	margin-left: 150px;
+	border-radius: 50px;
+}
+
+.descriptivo{
+	font-weight: bold;
+	font-family: Georgia, serif;
+	}
+.cuerpo h1{
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+#demoIzq, #demoDer { border:1px dashed; width:296px; background-color:#2E9AFE; text-align:center; }
+
+#demoDer { float:right; }
+
+select { width:220px; }
