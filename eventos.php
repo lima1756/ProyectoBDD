@@ -51,7 +51,7 @@ session_start();
             </br>
             </br>
             <?php echo '<img src="Images/'.$array['img'].'"  class="concertImg"   width="300px" heigh="300px" >'; ?>
-		
+		    <texto>
             </br>
             </br>
             Genero: 
@@ -73,6 +73,7 @@ session_start();
             <?php echo $array['descripcion']; ?>
             </br>
             </br>
+			</texto>
 <form action="compra.php" method="post">
 <input type="hidden" name="var" value="<?php echo $array['id_Concierto']; ?>">
 <input type="submit" value="Comprar boleto"> 

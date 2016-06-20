@@ -104,19 +104,14 @@ color: black;
 section{
 
 	width: 80%;
-	height:auto;
+	height:100%;
 	background-color: white;
 	box-shadow: 0px 0px 5px black;
 	float: left;
 }
 
 
-texto{
- float: left;
-    width: 300px;
-    margin-right: 10px;
 
-}
 
 formulariooo{
 
@@ -133,6 +128,13 @@ imag{
 	background-color: white;
 	box-shadow: 0px 0px 5px black;
 	float: left;
+}
+
+texto{
+ float: left;
+    width: 300px;
+    margin-right: 10px;
+
 }
 
 
