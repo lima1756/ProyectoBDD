@@ -40,8 +40,8 @@ include("Class-Functions/BaseDeDatos.php");
 
 <div class="cuerpo">
     <section class="instalaciones">
-    <img src="images/mapa.png" height="300" width="300">
-    <img src="images/descripcion.png" height="300" width="200">
+    <img src="images/mapa.png" height="500" width="500">
+    <img src="images/descripcion.png" height="400" width="350">
     </section>
 <div id="sidebar">
 <?php session_start(); ?>
