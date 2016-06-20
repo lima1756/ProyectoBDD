@@ -127,6 +127,12 @@ class BaseDeDatos {
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function noMore($usr, $con)
+    {
+        $sql=$this->con->query("CALL `verBoletos`('$usr')");
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function startTransaction(){
         $this->con->query("BEGIN;");
     }
