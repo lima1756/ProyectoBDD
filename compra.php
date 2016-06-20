@@ -45,7 +45,6 @@
 			<nav class="menu-fixed">
 				<ul>
                      <li><a href="index.php"><img src="Images/koncert.png" width="100px;"></a></li>
-					<li><a href="agenda.php">Agenda</a></li>
                     <li><a href="eventos.php">Conciertos</a></li>
                     <li><a href="instalaciones.php">Instalaciones</a></li>    
                     <li><form class="search">
