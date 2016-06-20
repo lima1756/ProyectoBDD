@@ -8,10 +8,7 @@
 	</head>
 	<body>
 		<header>
-		<div id="buscador">
-			<form>
-				<input id="boton" type="submit" name="boton" value="&rarr;"  style="padding:0px 10px;">
-			</form>
+		<div id="buscador"
 			<a href="index.php"><img src="images/koncert.png" width="200px;"></a>
 		</div>
 		</header>

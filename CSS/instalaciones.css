@@ -14,7 +14,11 @@ header{
     border-collapse: collapse;
     width: 100%;
 }
-
+.session{
+	font-size: 20px;
+	text-align: center;
+	color:white;
+}
 .cuerpo tr{
     height: 50px;
     text-align: center;

@@ -14,7 +14,11 @@ header{
     border-collapse: collapse;
     width: 100%;
 }
-
+.session{
+	font-size: 20px;
+	text-align: center;
+	color:white;
+}
 .cuerpo tr{
     height: 50px;
     text-align: center;
@@ -137,7 +141,7 @@ imag{
 
 
 #sidebar{
-	margin-top: 90px;
+	margin-top: 1px;
 	width:20%;
 	height:800px; 
 	background-color:   #A0a9a9;

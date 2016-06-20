@@ -9,7 +9,11 @@ header{
 .cuerpo {
 	margin-top: 90px;
 }
-
+.session{
+	font-size: 20px;
+	text-align: center;
+	color:white;
+}
 .cuerpo table{
     border-collapse: collapse;
     width: 100%;

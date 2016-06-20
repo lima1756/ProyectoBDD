@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
 	<title>Koncert!</title>
 	
-	<link rel="stylesheet" type="text/css" href="CSS/eventosn.css">
+	<link rel="stylesheet" type="text/css" href="CSS/eventos.css">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     

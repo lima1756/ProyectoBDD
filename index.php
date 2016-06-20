@@ -106,6 +106,12 @@ include("Class-Functions/BaseDeDatos.php");
     }
 </script>
 </div>
-
+<div class="endbar">
+    <p>Bienvenidos a Koncert!♫ La plataforma de conciertos online de Koncert®. Desde aqui podras ver los proximos conciertos,
+    además de comprar boletos para los mismos.</p>
+    <p class="uno">BIENVENIDO</p>
+    <br><br>
+    <p class="copyright">This web is protected by the international laws of copyright.<br> LIMA®</p>
+</div>
 </body>
 </html>

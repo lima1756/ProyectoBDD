@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php
-session_start(); 
-include('Class-Functions/BaseDeDatos.php'); 
-if(isset($_SESSION['adm']) and !$_SESSION['adm']):
-$ObjBD = new BaseDeDatos();
-if(isset($_GET['select'])):
-$val=$ObjBD->precio($_GET['select']);
+	session_start(); 
+	include('Class-Functions/BaseDeDatos.php'); 
+	if(isset($_SESSION['adm']) and !$_SESSION['adm']):
+	$ObjBD = new BaseDeDatos();
+	if(isset($_GET['select'])):
+	$val=$ObjBD->precio($_GET['select']);
 ?>
 <html  lang="es-US">
 	<head>

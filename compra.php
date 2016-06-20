@@ -127,7 +127,7 @@
 <?php endif; ?>
 <?php else: header('Location: eventos.php'); ?>
 <?php endif; ?>
-		<?php else: header('Location: index.php');?>
+		<?php else: header('Location: iniciarK.php');?>
 		<?php endif; ?>
 	
 

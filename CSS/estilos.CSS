@@ -15,6 +15,12 @@ header{
     width: 100%;
 }
 
+.session{
+	font-size: 20px;
+	text-align: center;
+	color:white;
+}
+
 .cuerpo tr{
     height: 50px;
     text-align: center;
@@ -152,7 +158,7 @@ padding-left: 1.5cm;
 }
 #sidebar{
 	width:20%;
-	height:800px; 
+	height:300px; 
 	background-color:   #A0a9a9;
 	float: right;
 	box-shadow: 0px 0px 5px black;
@@ -181,3 +187,27 @@ padding-left: 1.5cm;
 	border-radius: 100px;
 }
 
+.endbar{
+	margin-top:350px;
+}
+
+
+.endbar .uno{
+	color: white;
+	text-align: center;
+	font-family: "Impact, Charcoal, sans-serif";
+	font-size: 18px;
+}
+.endbar .copyright{
+	color: white;
+	text-align: center;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.endbar p{
+	color: white;
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 18px;
+}
