@@ -50,7 +50,6 @@ $val=$ObjBD->precio($_GET['select']);
 				
 				<br><br><br>
 				<input type="submit" value="Comprar">
-				<a href="Class-Functions/Cancelar.php"><button>Cancelar</button></a>
 			</form>
 			
 		</div>
