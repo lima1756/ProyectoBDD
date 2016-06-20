@@ -6,7 +6,7 @@ include("Class-Functions/BaseDeDatos.php");
 <head>
     <meta charset="UTF-8">
 	<title>Koncert!</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.CSS">
+	<link rel="stylesheet" type="text/css" href="CSS/instalaciones.CSS">
     <script src="http://code.jquery.com/jquery-lastest.js"</script>
     <script src ="JavaScripts/main.js"></script>
     
