@@ -1,0 +1,3 @@
+El archivo proyecto.sql es el que contiene toda la base de datos. Es necesario importarla en una base de datos llamada proyecto
+El archivo Triggers.sql contiene los triggers
+El archivo GenerarUsuario.sql es el que contiene la linea que genera el usuario que es necesario para que la página funcione.
