@@ -129,7 +129,7 @@ class BaseDeDatos {
 
     public function noMore($usr, $con)
     {
-        $sql=$this->con->query("CALL `verBoletos`('$usr')");
+        $sql=$this->con->query("CALL `cuantosBoletos`('$usr', $con)");
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 

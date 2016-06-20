@@ -44,7 +44,7 @@ INNER JOIN agenda ON concierto.id_Concierto = agenda.id_Concierto
 WHERE agenda.Finalizado=0$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `cuantosBoletos` (IN `usr` VARCHAR(10), IN `con` INT)  NO SQL
-SELECT COUNT(boleto.id_Persona) FROM boleto, persona, concierto 
+SELECT COUNT(boleto.id_Persona) as cont FROM boleto, persona, concierto 
 WHERE boleto.id_Persona=persona.Id_Persona 
 AND persona.Usuario=usr 
 AND boleto.id_Concierto = concierto.id_Concierto 
