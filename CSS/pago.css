@@ -13,23 +13,9 @@ header{
 	height: 100px;
 }
 
-#buscador form{
-float: left;	
-margin-left: 100px;
-height:30px;
-margin-top: 30px;
-}
-
-#buscador form input{
-
-	height:30px;
-	padding: 5px;
-}
-
 #buscador img{
-
-	float: right;
-	margin-left: 15px;
+	float: center;
+	margin-left: 180px;
 	margin-top: 5px;
 }
 

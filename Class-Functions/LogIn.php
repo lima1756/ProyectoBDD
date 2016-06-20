@@ -6,6 +6,7 @@ if(isset($_POST['usuario'])){
 		try{
 			$existe=$ObjBD->verificarLogIn($_POST['usuario'], $_POST['pass']);
 			if($existe[0]['exist']=='1'){
+                echo "ALGO";
                 session_start();
                 $datos=datosDeSesion($ObjBD);
                 $_SESSION['name']=$datos[0]['name'];
@@ -13,6 +14,8 @@ if(isset($_POST['usuario'])){
                 $_SESSION['user']=$_POST['usuario'];
                 header('Location: ../index.php');
 			}
+            else
+                echo "Revise los datos introducidos";
 		}   
 		catch(PDOException $e)
 		{
