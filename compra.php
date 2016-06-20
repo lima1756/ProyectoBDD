@@ -13,9 +13,11 @@
         }
         echo "</select>";
     }
+    if(isset($_POST['var'])):
     $ObjBD2 = new BaseDeDatos();
     $num = $ObjBD2->noMore($_SESSION['user'], $_POST['var']);
     if($num[0]['cont']=='0'):
+    
      
 ?>
  
@@ -125,7 +127,10 @@
 				<input type="submit" value="Siguiente">
 			</form>
 </div>
+
 <?php else: header('Location: mytickets.php'); ?>
+<?php endif; ?>
+<?php else: header('Location: eventos.php'); ?>
 <?php endif; ?>
 		<?php else: header('Location: index.php');?>
 		<?php endif; ?>

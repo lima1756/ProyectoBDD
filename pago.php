@@ -4,6 +4,7 @@ session_start();
 include('Class-Functions/BaseDeDatos.php'); 
 if(isset($_SESSION['adm']) and !$_SESSION['adm']):
 $ObjBD = new BaseDeDatos();
+if(isset($_GET['select'])):
 $val=$ObjBD->precio($_GET['select']);
 ?>
 <html  lang="es-US">
@@ -53,6 +54,8 @@ $val=$ObjBD->precio($_GET['select']);
 			</form>
 			
 		</div>
+		<?php else: header('Location: eventos.php');?>
+		<?php endif; ?>
 		<?php else: header('Location: index.php');?>
 		<?php endif; ?>
 	</body>
